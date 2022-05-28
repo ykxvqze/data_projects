@@ -1,6 +1,6 @@
 ## Aim
 
-Bypass the use of PL/SQL by writing a required table from mysql into a flat file, then processing the data via Python (pandas, numpy) and writing the result back into a new table in mysql server - with all calls being carried out briefly within the same Bash script.
+Bypass the use of PL/SQL by writing a required table from mysql into a flat file, then processing the data via Python (pandas, numpy) and writing the result back into a new table in mysql server - with all calls being carried out within the same Bash script.
 
 ### Task description
 
@@ -23,7 +23,7 @@ ID | NAME | OCCUPATION
 
 ### Solution
 
-Instead of querying from within mysql server and manipulating the data there, do the following in Bash (see `plsql_bypass.sh`):
+Instead of querying from within mysql server and manipulating the data there, do the following in Bash (see <a class="external reference" href="https://github.com/thln2ejz/data_projects/blob/master/plsql_bypass.sh">plsql_bypass.sh</a>).
 
 0. Create a database 'DB' and a table 'participants' for the demo.
 1. Extract the table from mysql (via: select * from participants) into a flat tsv file (i.e. no need for Procedural Language of PL/SQL)
@@ -43,12 +43,21 @@ ID,NAME,OCCUPATION
 ```
 
 Step 3 gives:
+```
+ID,NAME,OCCUPATION,Selected
+1,Jay,Engineer,False
+2,Lin,Engineer,False
+3,Tom,Architect,True
+4,Mat,Engineer,False
+5,Kim,Botanist,False
+6,Val,Architect,True
+```
 
+Step 4 gives:
 ```
 +----+------+------------+----------+
 | ID | NAME | OCCUPATION | SELECTED |
 +----+------+------------+----------+
-| ID | NAME | OCCUPATION | Selected |
 | 1  | Jay  | Engineer   | False    |
 | 2  | Lin  | Engineer   | False    |
 | 3  | Tom  | Architect  | True     |
