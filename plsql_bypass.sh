@@ -66,6 +66,9 @@ insert into participants values ('5','Kim','Botanist');
 insert into participants values ('6','Val','Architect');
 "
 
+# install mysql server if not already present
+[ `command -v mysql` ] || sudo apt-get install default-mysql-server
+
 # query mysql and write into tsv file
 sudo mysql -Be "select * from DB.participants;"  > participants.tsv  # option -B for tab-separated, i.e. w/o table borders
 
