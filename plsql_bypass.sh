@@ -84,7 +84,7 @@ x = [values[i] for i in range(len(values)) if counts[i] not in [min(counts), max
 print(x[0])
 
 df['Selected'] = df['OCCUPATION'].isin(x)
-df.to_csv('~/filetmp2', index=False, header=False)
+df.to_csv('/tmp/filetmp2', index=False, header=False)
 EOF
 
 python3 ./filetmp1
@@ -100,8 +100,11 @@ OCCUPATION varchar(255),
 SELECTED varchar(255)
 );
 
-load data infile '/home/sysadmin/filetmp2' into table participants_updated fields terminated by ',';
-select * from participants_updated; "
+load data infile '/tmp/filetmp2' into table participants_updated fields terminated by ',';
+select * from participants_updated;
+"
 
 # answer to part (1) as a one-liner in Bash
 cat participants.tsv | sed '1d' | cut -f 3 | sort | uniq -c | sort -n | sed '1d' | sed '$d' | tr -s ' ' | cut -d ' ' -f 3
+
+rm participants.tsv participants.csv ./filetmp1 /tmp/filetmp2 
