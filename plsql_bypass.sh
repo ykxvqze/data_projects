@@ -45,6 +45,9 @@ Sample output (adding a column after processing via Python; see "plsql_bypass.md
 J.A., xrzfyvqk_k1jw@pm.me
 '
 
+# install mysql server if not already present
+[ `command -v mysql` ] || sudo apt-get install default-mysql-server
+
 # create database and table
 sudo mysql -Be "
 create database DB;
@@ -65,9 +68,6 @@ insert into participants values ('4','Mat','Engineer');
 insert into participants values ('5','Kim','Botanist');
 insert into participants values ('6','Val','Architect');
 "
-
-# install mysql server if not already present
-[ `command -v mysql` ] || sudo apt-get install default-mysql-server
 
 # query mysql and write into tsv file
 sudo mysql -Be "select * from DB.participants;"  > participants.tsv  # option -B for tab-separated, i.e. w/o table borders
