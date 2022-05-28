@@ -34,7 +34,6 @@ Sample output (adding a column after processing via Python; see "plsql_bypass.md
 +----+------+------------+----------+
 | ID | NAME | OCCUPATION | SELECTED |
 +----+------+------------+----------+
-| ID | NAME | OCCUPATION | Selected |
 | 1  | Jay  | Engineer   | False    |
 | 2  | Lin  | Engineer   | False    |
 | 3  | Tom  | Architect  | True     |

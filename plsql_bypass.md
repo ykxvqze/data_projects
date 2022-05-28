@@ -21,17 +21,6 @@ ID | NAME | OCCUPATION
 5  | Kim  | Botanist
 6  | Val  | Architect
 
-+----+------+------------+
-| ID | NAME | OCCUPATION |
-+----+------+------------+
-| 1  | Jay  | Engineer   |
-| 2  | Lin  | Engineer   |
-| 3  | Tom  | Architect  |
-| 4  | Mat  | Engineer   |
-| 5  | Kim  | Botanist   |
-| 6  | Val  | Architect  |
-+----+------+------------+
-
 ### Solution
 
 Instead of querying from within mysql server and manipulating the data there, do the following in Bash (see `plsql_bypass.sh`):
@@ -43,7 +32,7 @@ Instead of querying from within mysql server and manipulating the data there, do
 4. Write the same result into a new table in mysql server.
 
 Step 2 gives:
-
+```
 ID,NAME,OCCUPATION
 1,Jay,Engineer
 2,Lin,Engineer
@@ -51,16 +40,11 @@ ID,NAME,OCCUPATION
 4,Mat,Engineer
 5,Kim,Botanist
 6,Val,Architect
+```
 
 Step 3 gives:
-ID,NAME,OCCUPATION,Selected
-1,Jay,Engineer,False
-2,Lin,Engineer,False
-3,Tom,Architect,True
-4,Mat,Engineer,False
-5,Kim,Botanist,False
-6,Val,Architect,True
 
+```
 +----+------+------------+----------+
 | ID | NAME | OCCUPATION | SELECTED |
 +----+------+------------+----------+
@@ -72,3 +56,4 @@ ID,NAME,OCCUPATION,Selected
 | 5  | Kim  | Botanist   | False    |
 | 6  | Val  | Architect  | True     |
 +----+------+------------+----------+
+```
