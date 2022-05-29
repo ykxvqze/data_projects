@@ -80,7 +80,7 @@ sudo mysql -Be "select * from DB.participants;"  > /tmp/participants.tsv  # opti
 cat /tmp/participants.tsv | tr '\t' ',' > /tmp/participants.csv  # csv file
 
 # data processing via Python
-cat << EOF > filetmp1
+cat << EOF > /tmp/filetmp1
 import pandas as pd
 import numpy as np
 
@@ -93,7 +93,7 @@ df['Selected'] = df['OCCUPATION'].isin(x)
 df.to_csv('/tmp/filetmp2', index=False, header=False)
 EOF
 
-python3 ./filetmp1
+python3 /tmp/filetmp1
 
 # write back into mysql as a new table
 sudo mysql -Be "
@@ -113,4 +113,4 @@ select * from participants_updated;
 # answer to part (1) as a one-liner in Bash
 cat /tmp/participants.tsv | sed '1d' | cut -f 3 | sort | uniq -c | sort -n | sed '1d' | sed '$d' | tr -s ' ' | cut -d ' ' -f 3
 
-rm /tmp/participants.tsv /tmp/participants.csv ./filetmp1 /tmp/filetmp2
+rm /tmp/participants.tsv /tmp/participants.csv /tmp/filetmp1 /tmp/filetmp2
