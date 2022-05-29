@@ -18,7 +18,7 @@ EXAMPLE:
 
 1. Extract the occupations which occur with neither maximum nor minimum frequency among participants.
 2. Add the column 'Selected' containing Boolean values:
-   'True' for occupations that match with the answer in 1, and 'False' otherwise.
+   True for occupations that match with the answer in 1, and False otherwise.
 
 Sample input:
 
