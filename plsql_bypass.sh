@@ -16,6 +16,10 @@ queries within the database server (for non-Big data).
 
 EXAMPLE:
 
+1. Extract the occupations which occur with neither maximum nor minimum frequency among participants.
+2. Add the column 'Selected' containing Boolean values:
+   'True' for occupations that match with the answer in 1, and 'False' otherwise.
+
 Sample input:
 
 +----+------+------------+
@@ -109,4 +113,4 @@ select * from participants_updated;
 # answer to part (1) as a one-liner in Bash
 cat participants.tsv | sed '1d' | cut -f 3 | sort | uniq -c | sort -n | sed '1d' | sed '$d' | tr -s ' ' | cut -d ' ' -f 3
 
-rm participants.tsv participants.csv ./filetmp1 /tmp/filetmp2 
+rm participants.tsv participants.csv ./filetmp1 /tmp/filetmp2
