@@ -17,8 +17,8 @@ queries within the database server (for non-Big data).
 EXAMPLE:
 
 1. Extract the occupations which occur with neither maximum nor minimum frequency among participants.
-2. Add the column 'Selected' containing Boolean values:
-   True for occupations that match with the answer in 1, and False otherwise.
+2. Add the column "Selected" containing Boolean values:
+   "True" for occupations that match with the answer in 1, and "False" otherwise.
 
 Sample input:
 
@@ -74,17 +74,17 @@ insert into participants values ('6','Val','Architect');
 "
 
 # query mysql and write into tsv file
-sudo mysql -Be "select * from DB.participants;"  > participants.tsv  # option -B for tab-separated, i.e. w/o table borders
+sudo mysql -Be "select * from DB.participants;"  > /tmp/participants.tsv  # option -B for tab-separated, i.e. w/o table borders
 
 # transform file into csv
-cat participants.tsv | tr '\t' ',' > participants.csv  # csv file
+cat /tmp/participants.tsv | tr '\t' ',' > /tmp/participants.csv  # csv file
 
 # data processing via Python
 cat << EOF > filetmp1
 import pandas as pd
 import numpy as np
 
-df = pd.read_csv('./participants.csv', sep=',')
+df = pd.read_csv('/tmp/participants.csv', sep=',')
 values, counts = np.unique(df['OCCUPATION'], return_counts=True)
 x = [values[i] for i in range(len(values)) if counts[i] not in [min(counts), max(counts)]]
 print(x[0])
@@ -111,6 +111,6 @@ select * from participants_updated;
 "
 
 # answer to part (1) as a one-liner in Bash
-cat participants.tsv | sed '1d' | cut -f 3 | sort | uniq -c | sort -n | sed '1d' | sed '$d' | tr -s ' ' | cut -d ' ' -f 3
+cat /tmp/participants.tsv | sed '1d' | cut -f 3 | sort | uniq -c | sort -n | sed '1d' | sed '$d' | tr -s ' ' | cut -d ' ' -f 3
 
-rm participants.tsv participants.csv ./filetmp1 /tmp/filetmp2
+rm /tmp/participants.tsv /tmp/participants.csv ./filetmp1 /tmp/filetmp2
