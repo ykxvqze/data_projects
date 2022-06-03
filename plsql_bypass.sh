@@ -9,16 +9,16 @@ OUTPUT:
 
 DESCRIPTION:
 
-* Bash script that writes a table from mysql into a flat file, calls
-Python for data processing, and writes back the result into mysql server.
-This bypasses the need to use Procedural Language or customized SQL
-queries within the database server (for non-Big data).
+Bash script that writes a table from mysql into a flat file, calls Python
+for data processing, and writes back the result into mysql server. This
+bypasses the need to use Procedural Language or customized SQL queries
+within the database server (for non-Big data).
 
 EXAMPLE:
 
 1. Extract the occupations which occur with neither maximum nor minimum frequency among participants.
 2. Add the column "Selected" containing Boolean values:
-   "True" for occupations that match with the answer in 1, and "False" otherwise.
+   "True" for occupations that match the answer in 1, and "False" otherwise.
 
 Sample input:
 
@@ -77,7 +77,7 @@ insert into participants values ('6','Val','Architect');
 sudo mysql -Be "select * from DB.participants;"  > /tmp/participants.tsv  # option -B for tab-separated, i.e. w/o table borders
 
 # transform file into csv
-cat /tmp/participants.tsv | tr '\t' ',' > /tmp/participants.csv  # csv file
+cat /tmp/participants.tsv | tr '\t' ',' > /tmp/participants.csv
 
 # data processing via Python
 cat << EOF > /tmp/filetmp1
