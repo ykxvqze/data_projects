@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 '''
 Multi-class classification via multiple one-class classification (OCC) 
 tasks. The dataset used is the NSL-KDD dataset for building a network 
@@ -6,11 +7,11 @@ intrusion detection system.
 DESCRIPTION: 
 
 The target class in any given one-versus-all (OVA) task is assigned a +1 
-class label, while all other classes are assgined a -1 label. Optimal 
+class label, while all other classes are assgined a -1 label. The optimal 
 (ROC) operating point criterion used is balanced accuracy, i.e. 
 1 - (fpr + (1-tpr))/2. The optimal threshold is found based on using 70%
-of the pure inlier component of the training set when training Isolation
-Forest. Class oversampling is applied via SMOTE before running OVA 
+of the pure inlier component of the training set when training the Isolation
+Forest classifier. Class oversampling is applied via SMOTE before running OVA
 tasks; classes are oversampled to half the size of the majority class.
 Multiple one-versus-all (OVA) classifications are carried out in the 
 following sequence (most to least common): normal, DoS, Probe, R2L, U2R.
@@ -32,27 +33,27 @@ from sklearn.metrics import roc_curve, roc_auc_score, classification_report, con
 
 
 class OVA(object):
-    '''inputs X_train, X_test, y_train, y_test: pandas data frames or
+    '''Inputs: X_train, X_test, y_train, y_test: pandas data frames or
     series; class_label is a string.
     '''
     def __init__(self, X_train, y_train, X_test, y_test):
         self.X_train = X_train
         self.X_test = X_test
         self.y_train = y_train
-        self.y_test = y_test
+        self.y_test = y_testi
     
     def relabel(self, class_label):
         y_train = self.y_train.copy()
         y_test = self.y_test.copy()
         
         y_train[y_train != class_label] = -1
-        y_test[y_test != class_label] = -1
-        y_train[y_train == class_label] = 1
-        y_test[y_test == class_label] = 1
+        y_test[y_test != class_label]   = -1
+        y_train[y_train == class_label] =  1
+        y_test[y_test == class_label]   =  1
         
         y_train = pd.to_numeric(y_train)
         y_test = pd.to_numeric(y_test)
-
+        
         return y_train, y_test
     
     @staticmethod
@@ -74,7 +75,7 @@ class OVA(object):
             if classifier_type == 'IsolationForest':
                 self.model = IsolationForest(*args, **kwargs)
             else:
-                raise Exception('Only IsolationForest is supported so far')
+                raise Exception('Only IsolationForest classifier is supported')
         
         def fit_model(self, X):
             self.model.fit(X)
