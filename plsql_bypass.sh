@@ -59,10 +59,10 @@ use DB;
 
 create table participants
 (
-ID varchar(255) not null,
-NAME varchar(255) not null,
-OCCUPATION varchar(255),
-primary key (ID)
+ID              varchar(255) not null,
+NAME            varchar(255) not null,
+OCCUPATION      varchar(255),
+primary key     (ID)
 );
 
 insert into participants values ('1','Jay','Engineer');
@@ -100,10 +100,10 @@ sudo mysql -Be "
 use DB;
 create table participants_updated
 (
-ID varchar(255) not null,
-NAME varchar(255),
-OCCUPATION varchar(255),
-SELECTED varchar(255)
+ID              varchar(255) not null,
+NAME            varchar(255),
+OCCUPATION      varchar(255),
+SELECTED        varchar(255)
 );
 
 load data infile '/tmp/filetmp2' into table participants_updated fields terminated by ',';
