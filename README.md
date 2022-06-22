@@ -10,4 +10,4 @@ Summary of procedure: <a class="external reference" href="https://github.com/thl
 
 ## Machine learning
 
-<a class="external reference" href="https://github.com/thln2ejz/data_projects/blob/master/ml_py.zip">ml.zip</a>: ML concepts (labs).
+<a class="external reference" href="https://github.com/thln2ejz/data_projects/blob/master/ml.zip">ml.zip</a>: ML concepts (labs).
