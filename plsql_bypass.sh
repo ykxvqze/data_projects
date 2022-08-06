@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-: ' 
+: '
 A demo for bypassing PL/SQL via Bash/Python
 
 USAGE:  ./plsql_bypass.sh
@@ -54,27 +54,28 @@ J.A., xrzfyvqk_k1jw@pm.me
 
 # create database and table
 sudo mysql -Be "
-create database DB;
-use DB;
+    create database DB;
+    use DB;
 
-create table participants
-(
-ID              varchar(255) not null,
-NAME            varchar(255) not null,
-OCCUPATION      varchar(255),
-primary key     (ID)
-);
+    create table participants
+    (
+        ID              varchar(255) not null,
+        NAME            varchar(255) not null,
+        OCCUPATION      varchar(255),
+        primary key     (ID)
+    );
 
-insert into participants values ('1','Jay','Engineer');
-insert into participants values ('2','Lin','Engineer');
-insert into participants values ('3','Tom','Architect');
-insert into participants values ('4','Mat','Engineer');
-insert into participants values ('5','Kim','Botanist');
-insert into participants values ('6','Val','Architect');
+    insert into participants values ('1','Jay','Engineer')  ;
+    insert into participants values ('2','Lin','Engineer')  ;
+    insert into participants values ('3','Tom','Architect') ;
+    insert into participants values ('4','Mat','Engineer')  ;
+    insert into participants values ('5','Kim','Botanist')  ;
+    insert into participants values ('6','Val','Architect') ;
 "
 
 # query mysql and write into tsv file
-sudo mysql -Be "select * from DB.participants;"  > /tmp/participants.tsv  # option -B for tab-separated, i.e. w/o table borders
+# option -B for tab-separated, i.e. w/o table borders
+sudo mysql -Be "select * from DB.participants;"  > /tmp/participants.tsv
 
 # transform file into csv
 cat /tmp/participants.tsv | tr '\t' ',' > /tmp/participants.csv
@@ -97,17 +98,17 @@ python3 /tmp/filetmp1
 
 # write back into mysql as a new table
 sudo mysql -Be "
-use DB;
-create table participants_updated
-(
-ID              varchar(255) not null,
-NAME            varchar(255),
-OCCUPATION      varchar(255),
-SELECTED        varchar(255)
-);
+    use DB;
+    create table participants_updated
+    (
+        ID              varchar(255) not null,
+        NAME            varchar(255),
+        OCCUPATION      varchar(255),
+        SELECTED        varchar(255)
+    );
 
-load data infile '/tmp/filetmp2' into table participants_updated fields terminated by ',';
-select * from participants_updated;
+    load data infile '/tmp/filetmp2' into table participants_updated fields terminated by ',';
+    select * from participants_updated;
 "
 
 # answer to part (1) as a one-liner in Bash
