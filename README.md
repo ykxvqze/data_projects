@@ -1,6 +1,6 @@
 ## Network Intrusion Detection System
 
-<a class="external reference" href="https://github.com/thln2ejz/data_projects/blob/master/nids_isf.py">nids_isf.py</a>: Isolation forest classifier (multiple-OVA design)
+<a class="external reference" href="https://github.com/thln2ejz/data_projects/blob/master/netids.py">netids.py</a>: Isolation forest classifier (multiple-OVA design)
 
 ## Bypassing PL/SQL via Bash/Python
 

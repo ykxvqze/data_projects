@@ -1,19 +1,19 @@
 #!/usr/bin/env python3
 '''
-Multi-class classification via multiple one-class classification (OCC) 
-tasks. The dataset used is the NSL-KDD dataset for building a network 
-intrusion detection system. 
+Multi-class classification via multiple one-class classification (OCC)
+tasks. The dataset used is the NSL-KDD dataset for building a network
+intrusion detection system.
 
-DESCRIPTION: 
+DESCRIPTION:
 
-The target class in any given one-versus-all (OVA) task is assigned a +1 
-class label, while all other classes are assgined a -1 label. The optimal 
-(ROC) operating point criterion used is balanced accuracy, i.e. 
+The target class in any given one-versus-all (OVA) task is assigned a +1
+class label, while all other classes are assgined a -1 label. The optimal
+(ROC) operating point criterion used is balanced accuracy, i.e.
 1 - (fpr + (1-tpr))/2. The optimal threshold is found based on using 70%
 of the pure inlier component of the training set when training the Isolation
 Forest classifier. Class oversampling is applied via SMOTE before running OVA
 tasks; classes are oversampled to half the size of the majority class.
-Multiple one-versus-all (OVA) classifications are carried out in the 
+Multiple one-versus-all (OVA) classifications are carried out in the
 following sequence (most to least common): normal, DoS, Probe, R2L, U2R.
 Instances that are not labeled by any of the one-class classifiers
 are labeled by a nearest mean classifier (nmc).
@@ -40,7 +40,7 @@ class OVA(object):
         self.X_train = X_train
         self.X_test = X_test
         self.y_train = y_train
-        self.y_test = y_testi
+        self.y_test = y_test
     
     def relabel(self, class_label):
         y_train = self.y_train.copy()
@@ -254,7 +254,7 @@ def main():
         y_pred = isf._predict(y_prob, optimal_threshold)
         isf.print_eval(y_validate_class, y_pred)
         
-        # test set 
+        # test set
         '''note: 'theshold' below will _not_ be used in final evaluation
         of the multiple OCC design'''
         isf.fit_model(X_train[y_train_origin==1])
