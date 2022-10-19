@@ -46,7 +46,7 @@ Sample output (adding a column after processing via Python; see "plsql_bypass.md
 | 6  | Val  | Architect  | True     |
 +----+------+------------+----------+
 
-J.A., xrzfyvqk_k1jw@pm.me
+J.A., ykxvqz@pm.me
 '
 
 # install mysql server if not already present
