@@ -6,7 +6,7 @@
 
 <a class="external reference" href="https://github.com/thln2ejz/data_projects/blob/master/ml.zip">ml.zip</a>: ML concepts (labs).
 
-<a class="external reference" href="https://thln2ejz.github.io/ML_Python/ml_applications.zip">ml_applications.zip</a>: ML applications (labs).
+<a class="external reference" href="https://github.com/thln2ejz/data_projects/blob/master/ml_applications.zip">ml_applications.zip</a>: ML applications (labs).
 
 ## Bypassing PL/SQL via Bash/Python
 
