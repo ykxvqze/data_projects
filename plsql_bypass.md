@@ -1,6 +1,6 @@
 ## Aim
 
-Bypass the use of PL/SQL by writing a required table from mysql into a flat file, then processing the data via Python (pandas, numpy) and writing the result back into a new table in mysql server - with all calls being carried out within the same Bash script.
+Bypass the use of PL/SQL by writing a required table from MySQL into a flat file, then processing the data via Python (pandas, numpy) and writing the result back into a new table in MySQL server - with all calls being carried out within the same Bash script.
 
 ### Task description
 
@@ -23,13 +23,13 @@ ID | NAME | OCCUPATION
 
 ### Solution
 
-Instead of querying from within mysql server and manipulating the data there, do the following in Bash (see <a class="external reference" href="https://github.com/thln2ejz/data_projects/blob/master/plsql_bypass.sh">plsql_bypass.sh</a>).
+Instead of querying from within MySQL server and manipulating the data there, do the following in Bash (see <a class="external reference" href="https://github.com/thln2ejz/data_projects/blob/master/plsql_bypass.sh">plsql_bypass.sh</a>).
 
 0. Create a database 'DB' and a table 'participants' for the demo.
-1. Extract the table from mysql (via: select * from participants) into a flat tsv file (i.e. no need for Procedural Language of PL/SQL)
+1. Extract the table from MySQL (via: select * from participants) into a flat tsv file
 2. Transform the tab-separated file into a csv file (via 'tr' in Bash).
 3. Process the data as needed via Python code called from within Bash, and write the result to a csv file.
-4. Write the same result into a new table in mysql server.
+4. Write the same result into a new table in MySQL server.
 
 Step 2 gives:
 ```
