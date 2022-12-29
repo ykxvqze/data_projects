@@ -23,7 +23,7 @@ ID | NAME | OCCUPATION
 
 ### Solution
 
-Instead of querying from within MySQL server and manipulating the data there, do the following in Bash (see <a class="external reference" href="https://github.com/thln2ejz/data_projects/blob/master/plsql_bypass.sh">plsql_bypass.sh</a>).
+Instead of querying from within MySQL server and manipulating the data there, do the following in Bash (see <a class="external reference" href="https://github.com/thln2ejz/data_projects/blob/master/sqlextern.sh">sqlextern.sh</a>).
 
 0. Create a database 'DB' and a table 'participants' for the demo.
 1. Extract the table from MySQL (via: select * from participants) into a flat tsv file
