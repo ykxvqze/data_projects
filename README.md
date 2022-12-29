@@ -8,11 +8,11 @@
 
 <a class="external reference" href="https://github.com/thln2ejz/data_projects/blob/master/ml_applications.zip">ml_applications.zip</a>: ML applications (labs).
 
-## Bypassing PL/SQL via Bash/Python
+## Processing SQL data via Bash/Python
 
-<a class="external reference" href="https://github.com/thln2ejz/data_projects/blob/master/plsql_bypass.sh">plsql_bypass.sh</a>: Bash script that writes a table from mysql into a flat file, calls Python for data processing, and writes back the result into mysql server. This bypasses the need to use Procedural Language or customized SQL queries within the database server (for non-Big data).
+<a class="external reference" href="https://github.com/thln2ejz/data_projects/blob/master/sqlextern.sh">sqlextern.sh</a>: Bash script demo that writes a table from mysql into a flat file, calls Python for data processing, and writes back the result into mysql server. This bypasses the need to use Procedural Language or customized SQL queries within the database server (for non-Big data).
 
-Summary of procedure: <a class="external reference" href="https://github.com/thln2ejz/data_projects/blob/master/plsql_bypass.md">plsql_bypass.md</a><br>
+Summary of procedure: <a class="external reference" href="https://github.com/thln2ejz/data_projects/blob/master/sqlextern.md">sqlextern.md</a><br>
 
 <!--## Privacy-preserving method for merging datasets
 
