@@ -1,6 +1,6 @@
 ## Aim
 
-Bypass the use of PL/SQL by writing a required table from MySQL into a flat file, then processing the data via Python (pandas, numpy) and writing the result back into a new table in MySQL server - with all calls being carried out within the same Bash script.
+Export a given table from MySQL into a flat file, then process the data via Python (pandas, numpy) and write the result back into a new table in MySQL server - with all calls being carried out within the same Bash script.
 
 ### Task description
 

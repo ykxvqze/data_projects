@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 : '
-A demo for bypassing PL/SQL via Bash/Python
+A demo for processing SQL data externally via Bash/Python
 
-USAGE:  ./plsql_bypass.sh
+USAGE:  ./sqlextern.sh
 
 OUTPUT:
         see: EXAMPLE
@@ -33,7 +33,7 @@ Sample input:
 | 6  | Val  | Architect  |
 +----+------+------------+
 
-Sample output (adding a column after processing via Python; see "plsql_bypass.md"):
+Sample output (adding a column after processing via Python; see "sqlextern.md"):
 
 +----+------+------------+----------+
 | ID | NAME | OCCUPATION | SELECTED |
