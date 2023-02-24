@@ -1,6 +1,6 @@
 ## Network Intrusion Detection System
 
-<a class="external reference" href="https://github.com/thln2ejz/data_projects/blob/master/netids.py">netids.py</a>: Isolation forest classifier (multiple-OVA design)
+<a class="external reference" href="https://github.com/thln2ejz/data_projects/blob/master/nids.py">nids.py</a>: Isolation forest classifier (multiple-OVA design)
 
 ## Machine learning
 
