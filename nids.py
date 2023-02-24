@@ -63,7 +63,6 @@ def split_data(X, y, label_train=1, ratio_train=0.7):
 def plot_roc(y_true, y_prob, label):
     fpr, tpr, thresholds = roc_curve(y_true=y_true, y_score=y_prob)
     auroc = roc_auc_score(y_true, y_prob)
-    
     plt.plot(fpr, tpr, label = f'{label}: AUC={auroc.round(4)}')
     plt.plot([0, 1], [0, 1], c='gray', lw=1, linestyle='--')
     plt.xlabel('False Positive Rate')
