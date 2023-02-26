@@ -5,11 +5,15 @@ regression
 J.A., ykxvqz@pm.me
 '''
 
-# Part 1
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+from scipy.stats import linregress
+from sklearn.linear_model import LinearRegression
+from sklearn.linear_model import LinearRegression
+from sklearn.model_selection import train_test_split
 
+# Part 1
 # part (a)
 def linear_regression(X, y):
     X = np.stack([X, np.ones(X.shape[0])], axis=1)
@@ -30,14 +34,12 @@ plt.show()
 beta1_pred, beta0_pred = linear_regression(X,y)
 
 # alternatively (scipy):
-from scipy.stats import linregress
 beta1_pred, beta0_pred, _, _, _ = linregress(X, y)
 
 X_test = np.sort(X)
 y_pred = beta0_pred + beta1_pred*X_test
 
 # alternatively (sklearn):
-from sklearn.linear_model import LinearRegression
 model = LinearRegression().fit(X.reshape(-1,1), y)
 beta1_pred = model.coef_
 beta0_pred = model.intercept_
@@ -99,7 +101,6 @@ beta1_pred, beta0_pred, r_value, p_value, std_err = linregress(X, y)
 R_sq = r_value**2
 
 # alternatively:
-from sklearn.linear_model import LinearRegression
 model = LinearRegression().fit(X.reshape(-1,1), y)
 beta1_pred = model.coef_
 beta0_pred = model.intercept_
@@ -155,8 +156,6 @@ plt.show()
 # a good value for h is 0.1: if it's lower you're overfitting, if it's higher you're underfitting.
 
 # Part 5
-from sklearn.model_selection import train_test_split
-
 def optimize_h(X, y, h):  #1D case
     rep = 5
     mse = np.zeros([rep,len(h)])

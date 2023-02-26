@@ -8,6 +8,7 @@ J.A., ykxvqz@pm.me
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+from sklearn.linear_model import LogisticRegression
 
 # data exploration
 path_to_file = './data/conversion.txt'
@@ -106,8 +107,6 @@ df = pd.concat([df_categorical, data[['age','campaign','previous']]], axis=1)
 
 X = df.copy()
 y = data['y']
-
-from sklearn.linear_model import LogisticRegression
 
 model = LogisticRegression(solver='lbfgs').fit(X, y)
 y_pred = model.predict(X)

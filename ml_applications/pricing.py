@@ -8,6 +8,8 @@ J.A., ykxvqz@pm.me
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+from scipy import stats
+from scipy.optimize import minimize
 
 # explore the data
 path_to_file = './data/wtp.txt'
@@ -26,8 +28,6 @@ plt.grid()
 plt.show()
 
 # method of moments
-from scipy import stats
-
 mean = df['wtp'].mean()
 std = df['wtp'].std()
 x = np.linspace(df['wtp'].min(), df['wtp'].max(), 100)
@@ -114,8 +114,6 @@ print(profit(18, 15, loc, scale, 10000))
 
 def neg_profit(price, cost, loc, scale, market_size):
     return -1 * profit(price, cost, loc, scale, market_size)
-
-from scipy.optimize import minimize
 
 optimized = minimize(fun=neg_profit, x0=20, args=(15, loc, scale, 10000), method='BFGS')
 

@@ -8,7 +8,7 @@ J.A., ykxvqz@pm.me
 # read-in data
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
+from sklearn.metrics.pairwise import cosine_similarity
 
 path_to_file = './data/invoices.csv'
 data = pd.read_csv(path_to_file)
@@ -36,8 +36,6 @@ df['customer_id'].nunique()
 
 # collaborative filtering
 # user-based collaborative filtering
-from sklearn.metrics.pairwise import cosine_similarity
-
 user_user_matrix = pd.DataFrame(cosine_similarity(user_item_matrix), columns=user_item_matrix.index, index=user_item_matrix.index)
 
 user_user_matrix.head()

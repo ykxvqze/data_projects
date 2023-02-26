@@ -8,6 +8,8 @@ J.A., ykxvqz@pm.me
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+from statsmodels.formula.api import mnlogit
+from sklearn.linear_model import LogisticRegression
 
 # data exploration
 path_to_file = './data/tablets.txt'
@@ -16,12 +18,11 @@ data.head()
 
 data.shape  # (137*15*3, 10)
 
-###########################################################
+#
 # Option 1: multinomial logit model
 # no need for dummy vars for mnlogit(): does it internally;
 # using dummy vars gives the same result
-###########################################################
-from statsmodels.formula.api import mnlogit
+#
 model = mnlogit('choice ~ 0 + brand + size + storage + ram + battery + price', data).fit()
 model.summary()
 
@@ -56,14 +57,13 @@ r1gb_to_r4gb[0]
 sz7inch_to_sz9inch = (model.params.loc["size[T.sz7inch]"] - model.params.loc["size[T.sz9inch]"])/model.params.loc["price"]
 sz7inch_to_sz9inch[0]
 
-########################################################################
+#
 # Option 2: logistic regression (same result if all dummy vars are kept)
-########################################################################
+#
 
 X = pd.get_dummies(data.drop(['choice','choiceset_id','alternative_id','consumer_id'], axis=1))
 y = data['choice']
 
-from sklearn.linear_model import LogisticRegression
 model = LogisticRegression(multi_class = 'multinomial', solver='newton-cg', fit_intercept = False).fit(X, y)
 
 # parameter interpretation

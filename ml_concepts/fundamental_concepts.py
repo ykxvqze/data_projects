@@ -5,19 +5,14 @@ fundamental concepts
 J.A., ykxvqz@pm.me
 '''
 
-# Part 1
-# clear all vars (not beginning with _)
-for name in dir():
-    if not name.startswith('_'):
-        del globals()[name]
-# %reset -f in Jupyter
-
-import os
-os.system('clear')
-
 import numpy as np
+import pandas as pd
+from pandas.plotting import scatter_matrix
 import matplotlib.pyplot as plt
+from sklearn.neighbors import KernelDensity
+from scipy.spatial.distance import cdist
 
+# Part 1
 x = np.random.normal(loc=0,scale=1,size=1000)
 nb = 10
 plt.hist(x,bins=nb,density=False)
@@ -57,7 +52,6 @@ axs[1].boxplot(b,patch_artist=False,vert=True)
 plt.show()
 
 # Part 5
-import pandas as pd
 path_to_file = './data/boomerang3D.txt'
 df = pd.read_csv(path_to_file, sep=' ')
 
@@ -90,7 +84,6 @@ path_to_file = './data/dataset8D.txt'
 df = pd.read_csv(path_to_file, sep=' ')
 df.info()
 
-from pandas.plotting import scatter_matrix
 scatter_matrix(df.iloc[:,:-1], diagonal='kde')
 plt.show()
 
@@ -211,8 +204,6 @@ plt.ylabel('density')
 plt.show()
 
 # sklearn's KernelDensity() method
-from sklearn.neighbors import KernelDensity
-
 model = KernelDensity(kernel='gaussian', bandwidth=1)
 x = np.linspace(a.min()-3, a.max()+3, 1000).reshape(-1,1)
 model.fit(np.array(a).reshape(-1,1))
@@ -243,8 +234,6 @@ plt.show()
 h[np.array(ll).argmax()]
 
 # Part 15
-from scipy.spatial.distance import cdist
-
 def knnd(a, b, k=1):
     n = len(a)
     D = cdist(b, a)

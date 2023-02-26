@@ -5,13 +5,20 @@ feature selection & extraction
 J.A., ykxvqz@pm.me
 '''
 
-# Part 1
 import numpy as np
 import pandas as pd
+import matplotlib.pyplot as plt
 from sklearn import datasets
 from sklearn.feature_selection import RFE
 from sklearn.svm import SVC
+from sklearn.decomposition import PCA
+from sklearn.preprocessing import StandardScaler
+from sklearn import datasets
+from sklearn.discriminant_analysis import LinearDiscriminantAnalysis as LDA
+from sklearn.manifold import MDS
+from geneticalgorithm import geneticalgorithm as ga  # https://pypi.org/project/geneticalgorithm/
 
+# Part 1
 iris = datasets.load_iris()
 meas = iris.data
 y = iris.target
@@ -29,9 +36,6 @@ rfe.support_.nonzero()
 path_to_file = './data/sonar.txt'
 df = pd.read_csv(path_to_file, sep=' ')
 
-from sklearn.decomposition import PCA
-import matplotlib.pyplot as plt
-
 pca = PCA()  # n_components not specified => keep all
 pca.fit(df)
 rv = pca.explained_variance_.cumsum()/pca.explained_variance_.sum()
@@ -45,7 +49,6 @@ plt.ylabel('ratio of retained variance to total variance')
 plt.show()
 
 # Part 3
-from sklearn.preprocessing import StandardScaler
 df_scaled = StandardScaler().fit_transform(df)
 
 pca = PCA().fit(df_scaled)
@@ -59,8 +62,6 @@ plt.legend(['original','normalized'])
 plt.show()
 
 # Part 4
-from sklearn import datasets
-from sklearn.discriminant_analysis import LinearDiscriminantAnalysis as LDA
 iris = datasets.load_iris()
 X = iris.data
 y = iris.target
@@ -105,8 +106,6 @@ plt.axis('equal')
 plt.show()
 
 # Part 6
-from sklearn.manifold import MDS
-
 mds = MDS(n_components=2, max_iter=3000, dissimilarity="euclidean")
 df_mds = mds.fit_transform(df)
 
@@ -157,8 +156,6 @@ e = np.array([Rastrigin([i,j]) for i in x1 for j in x2]).reshape(len(x1),len(x2)
 e = pd.DataFrame(e, index=x1, columns=x2)
 
 # surface plot
-import matplotlib.pyplot as plt
-
 ax = plt.axes(projection="3d")
 x, y = np.meshgrid(x2, x1)
 ax.plot_surface(x, y, e)
@@ -176,9 +173,6 @@ plt.colorbar()
 plt.show()
 
 # Parts 10/11
-# shell: pip3 install geneticalgorithm
-from geneticalgorithm import geneticalgorithm as ga  # https://pypi.org/project/geneticalgorithm/
-
 varbound = np.array([[-3,3]]*2)
 algorithm_param = {'max_num_iteration':1000,
                    'population_size':20,

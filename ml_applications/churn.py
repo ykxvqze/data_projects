@@ -8,6 +8,11 @@ J.A., ykxvqz@pm.me
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+from sklearn.model_selection import train_test_split
+from tensorflow import keras
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import confusion_matrix
+from sklearn.metrics import roc_curve, auc
 
 # data exploration
 path_to_file = './data/churn.txt'
@@ -80,17 +85,12 @@ df_tx = pd.concat([pd.get_dummies(df_categorical), df_tx], axis=1)
 df_tx.shape
 
 # train/test set
-from sklearn.model_selection import train_test_split
-
 X = df_tx.drop(['churn'], axis=1)
 y = df_tx['churn']
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, stratify=y)
 
 # artificial neural network with Keras/Tensorflow
-# terminal: pip3 install tensorflow
-from tensorflow import keras
-
 model = keras.Sequential([
 keras.layers.Dense(16, kernel_initializer="uniform", activation='relu', input_dim=X_train.shape[1]),
 keras.layers.Dense(8, kernel_initializer="uniform", activation='relu'),
@@ -109,9 +109,6 @@ error_test = 1 - model.evaluate(X_test, y_test)[1]
 model.predict(X_test)
 
 # logistic classifier
-from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import confusion_matrix
-
 model = LogisticRegression(solver='lbfgs').fit(X_train, y_train)
 y_pred = model.predict(X_test)
 y_pred_prob = model.predict_proba(X_test)
@@ -140,8 +137,6 @@ print(f'There are {matrix[1][1]} true positive')
 '''
 
 # ROC/AUC using sklearn
-from sklearn.metrics import roc_curve, auc
-
 fpr, tpr, thresholds = roc_curve(y_true=y_test, y_score=y_pred_prob[:,0], pos_label=0)
 roc_auc = auc(fpr, tpr)
 
@@ -161,7 +156,7 @@ for threshold in np.linspace(0,1,1000):
     tpr.append(((labels==1) & (y_test==1)).sum()/(y_test==1).sum())
 
 def auc(x,y):
-    dx = np.diff(x)  # x,y should be arrays
+    dx = np.diff(x)  # x,y -> arrays
     base1 = y[:-1]  # base 1 of trapezium
     base2 = y[1:]
     trapezium_areas = (base1 + base2)*dx/2

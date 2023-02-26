@@ -5,11 +5,14 @@ Gaussian processes
 J.A., ykxvqz@pm.me
 '''
 
-# Part 1
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+from sklearn.model_selection import train_test_split
+from sklearn.gaussian_process import GaussianProcessRegressor
+from sklearn.gaussian_process.kernels import RBF, ExpSineSquared
 
+# Part 1
 def synth_data(n_samples, sigma):
     X = np.random.uniform(low=0, high=2, size=n_samples)
     X = np.sort(X)
@@ -76,8 +79,6 @@ plt.show()
 
 # Part 4
 # use train_test_split() twice
-from sklearn.model_selection import train_test_split
-
 # start with original dataset as X, y
 X, y = X_train, y_train
 
@@ -176,9 +177,6 @@ plt.show()
 
 # Part 6
 # GP using sklearn
-from sklearn.gaussian_process import GaussianProcessRegressor
-from sklearn.gaussian_process.kernels import RBF, ExpSineSquared
-
 kernel = RBF()  # i.e. 1.0 * RBF(length_scale=1.0, length_scale_bounds=(0.05, 1))
 y_pred_prior = GaussianProcessRegressor(kernel=kernel).sample_y(X_test.reshape(-1,1), n_samples=n_samples)  # sample from pior
 model = GaussianProcessRegressor(kernel=kernel, alpha=0.5).fit(X.reshape(-1,1), y)  # alpha is sigma_noise (should be set)

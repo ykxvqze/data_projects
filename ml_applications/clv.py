@@ -34,7 +34,7 @@ data.head()
 # RFM features
 data['days_elapsed'] = (pd.to_datetime('2016-01-01') - data['date']).dt.days
 
-data_2015 = data.groupby(['id']).aggregate({'days_elapsed':['min', 'max'], 'id':'count', 'amount':'mean'}) #both min and max
+data_2015 = data.groupby(['id']).aggregate({'days_elapsed':['min', 'max'], 'id':'count', 'amount':'mean'})  # both min and max
 data_2015.columns = ['recency','first_purchase','frequency','average_amount']
 data_2015.head()
 
@@ -46,7 +46,7 @@ rev_2015 = rev_2015.groupby(['id']).aggregate({'amount':'sum'})
 rev_2015.columns = ['rev_2015']
 
 # past data
-data_2014 = data.copy().loc[data['days_elapsed']>365] #or data_2014 = data[data['date']<'2015-01-01']
+data_2014 = data.copy().loc[data['days_elapsed']>365]  # or data_2014 = data[data['date']<'2015-01-01']
 
 data_2014 = data_2014.groupby(['id']).aggregate({'days_elapsed':['min', 'max'], 'id':'count', 'amount':'mean'})
 data_2014.columns = ['recency','first_purchase','frequency','average_amount']
@@ -79,7 +79,7 @@ data_2015['cluster'] = pd.Categorical(data_2015['cluster'], ['A','B','G','F','E'
 data_2015.groupby(['cluster']).mean()
 
 #data_2015['cluster'].value_counts().reindex(['A','B','G','F','E','J','I','H'])
-#data_2015.groupby(['cluster']).mean().reindex(['A','B','G','F','E','J','I','H']) #re-order segments
+#data_2015.groupby(['cluster']).mean().reindex(['A','B','G','F','E','J','I','H'])  # re-order segments
 
 # same for data_2014
 data_2014['cluster'] = np.nan
@@ -111,7 +111,7 @@ plt.pie(df.values, labels=df.index, autopct='%0.2f%%')
 plt.title('Customer segments')
 plt.show()
 
-df.idxmax() #largest segment
+df.idxmax()  # largest segment
 
 # revenue per cluster
 df_rev = data_merged.groupby(data_2014['cluster']).aggregate({'rev_2015':'mean'})
@@ -142,7 +142,7 @@ M.loc['H','E']
 clusters = pd.DataFrame(np.nan, columns=range(2015,2025+1), index=['A','B','G','F','E','J','I','H'])
 clusters[2015] = data_2015['cluster'].value_counts()
 
-for year in range(2016,2025+1): #or clusters.columns[1:]
+for year in range(2016,2025+1):  # or clusters.columns[1:]
     clusters[year] = clusters[year-1].dot(M)
 
 clusters.round()
@@ -185,7 +185,7 @@ plt.show()
 
 # accounting for interest rate
 i = 0.1
-P = 1 / ((1 + i)**np.arange(0,11)) #P = F/(1+i)^n
+P = 1 / ((1 + i)**np.arange(0,11))  # P = F/(1+i)^n
 
 total_rev_yearly_disc = rev_per_cluster.sum(axis=0) * P
 

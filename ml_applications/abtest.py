@@ -8,6 +8,11 @@ J.A., ykxvqz@pm.me
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+import seaborn as sbn
+from scipy import stats
+import statsmodels.api as sm
+from statsmodels.formula.api import ols
+from statsmodels.stats.multicomp import pairwise_tukeyhsd
 
 # data exploration
 path_to_file = './data/marketing_campaign.csv'
@@ -62,7 +67,6 @@ plt.ylabel('count')
 plt.show()
 
 # alternatively: using seaborn
-import seaborn as sbn
 '''
 sbn.barplot(df_market_size_per_promo['promotion'], df_market_size_per_promo['sales_in_thousands'], df_market_size_per_promo['market_size'])
 plt.title('market sizes by promotion')
@@ -131,7 +135,6 @@ plt.show()
 '''
 
 # statistical significance
-from scipy import stats
 means = df.groupby('promotion')['sales_in_thousands'].mean()
 stds = df.groupby('promotion')["sales_in_thousands"].std()
 ns = df.groupby('promotion')["sales_in_thousands"].count()
@@ -174,13 +177,9 @@ anova
 anova.pvalue
 
 # alternatively: using statsmodels
-import statsmodels.api as sm
-from statsmodels.formula.api import ols
-
 model = ols('sales_in_thousands ~ C(promotion)', data=df).fit()
 table = sm.stats.anova_lm(model)
 table
 
 # Tukey's pairwise test
-from statsmodels.stats.multicomp import pairwise_tukeyhsd
 print(pairwise_tukeyhsd(df['sales_in_thousands'], df['promotion']))

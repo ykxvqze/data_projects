@@ -8,6 +8,9 @@ J.A., ykxvqz@pm.me
 # read-in data
 import pandas as pd
 import numpy as np
+from sklearn.preprocessing import scale
+from sklearn.cluster import KMeans
+from sklearn.metrics import silhouette_score
 
 path_to_file = './data/invoices.csv'
 data = pd.read_csv(path_to_file)
@@ -42,14 +45,11 @@ df_customers.shape
 
 df_rank = df_customers.rank(method='first')  # default is 'average'
 
-from sklearn.preprocessing import scale
-
 df_norm = pd.DataFrame(scale(df_rank), index=df_rank.index, columns=df_rank.columns)
 
 df_norm.describe().loc[['mean','std']]
 
 # customer segmentation by k-means clustering
-from sklearn.cluster import KMeans
 model = KMeans(n_clusters=4, max_iter=100, n_init=10).fit(df_norm)
 model.labels_
 model.cluster_centers_  # each row is a centroid
@@ -61,7 +61,6 @@ df_customers['label'] = model.labels_
 df_customers.groupby(['label']).mean()
 
 # optimal number of clusters by silhouette
-from sklearn.metrics import silhouette_score
 
 k_optimal, highest_score = 0, -1
 for k in range(4,11):

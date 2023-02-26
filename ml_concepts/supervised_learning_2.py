@@ -5,12 +5,22 @@ supervised learning 2
 J.A., ykxvqz@pm.me
 '''
 
-# Part 1
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
+from sklearn.neural_network import MLPClassifier
+from sklearn.discriminant_analysis import QuadraticDiscriminantAnalysis as qda
+from sklearn.discriminant_analysis import LinearDiscriminantAnalysis as lda
+from sklearn.svm import SVC
+from sklearn.metrics import accuracy_score, precision_score, recall_score
+from sklearn.metrics import roc_curve, auc
+from sklearn.metrics import confusion_matrix
+from sklearn.ensemble import VotingClassifier
+from sklearn.svm import SVR
+from sklearn.model_selection import GridSearchCV
 
+# Part 1
 path_to_file = './data/boomerang2D.txt'
 df = pd.read_csv(path_to_file, sep=' ')
 
@@ -23,8 +33,6 @@ plt.scatter(X_train['f1'], X_train['f2'], c=y_train)
 plt.show()
 
 # sklearn
-from sklearn.neural_network import MLPClassifier
-
 # default activation is 'relu' for the hidden layer.
 model = MLPClassifier(solver='lbfgs', hidden_layer_sizes=(30, 30), activation='logistic')
 model.fit(X_train, y_train)
@@ -46,12 +54,10 @@ plt.scatter(xx.ravel(), yy.ravel(), c=labels_pred, marker='+', alpha=0.4)
 plt.scatter(X_train.iloc[:,0], X_train.iloc[:,1], c=y_train.replace({1:'black', 2:'red'}))
 plt.show()
 
-from sklearn.metrics import accuracy_score, precision_score, recall_score
 accuracy_score(y_test, y_pred)
 precision_score(y_test, y_pred)
 recall_score(y_test, y_pred)
 
-from sklearn.metrics import roc_curve, auc
 fpr, tpr, thresholds = roc_curve(y_true=y_test, y_score=y_pred_prob[:,0], pos_label=1)
 roc_auc = auc(fpr, tpr)
 
@@ -68,9 +74,6 @@ df = pd.read_csv(path_to_file, sep=' ')
 
 X = df.drop(['label'],axis=1)
 y = df['label']
-
-from sklearn.discriminant_analysis import QuadraticDiscriminantAnalysis as qda
-from sklearn.discriminant_analysis import LinearDiscriminantAnalysis as lda
 
 n_train = [10, 20, 50, 100]
 error_test_mean, error_test_std = [], []
@@ -99,9 +102,6 @@ y = df['label']
 X_train, X_test, y_train, y_test = train_test_split(X, y, train_size=0.5, stratify=y)
 
 y_train.value_counts()
-
-from sklearn.svm import SVC
-from sklearn.metrics import confusion_matrix
 
 model = SVC(kernel='rbf', C=1, gamma=1, probability=True).fit(X_train, y_train)
 y_pred = model.predict(X_test)
@@ -139,7 +139,6 @@ y_pred_product = y_prob_product.argmax(axis=1) + 1
 (y_pred_product != y_pred_lda).sum()
 
 # only the sum rule is available in sklearn via VotingClassifier() with 'soft' option
-from sklearn.ensemble import VotingClassifier
 model_sum = VotingClassifier(estimators=[('qda', model_qda), ('lda', model_lda)], voting='soft')
 model_sum = model_sum.fit(X_train, y_train)
 y_pred_sum = model_sum.predict(X_test)
@@ -158,7 +157,6 @@ plt.xlabel('X')
 plt.ylabel('y')
 plt.show()
 
-from sklearn.svm import SVR
 model = SVR(kernel='rbf', C=1, epsilon=0.1, gamma='scale').fit(X_train.reshape(-1,1), y_train)
 y_pred = model.predict(X_train.reshape(-1,1))
 
@@ -172,8 +170,6 @@ plt.show()
 rmse = np.sqrt(((y_train - y_pred)**2).mean())
 
 # Part 6
-from sklearn.model_selection import GridSearchCV
-
 parameters = {'kernel' : ['rbf'],
               'gamma'  : np.linspace(1,10,20),
               'epsilon': np.linspace(0,1,10),

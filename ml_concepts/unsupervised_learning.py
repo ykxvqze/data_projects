@@ -4,16 +4,24 @@ unsupervised learning
 
 J.A., ykxvqz@pm.me
 '''
+
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
 import sys, sklearn
+from scipy.cluster.hierarchy import linkage, dendrogram
+from sklearn.cluster import AgglomerativeClustering
+from sklearn.metrics import davies_bouldin_score
+from sklearn.cluster import KMeans
+from sklearn import mixture
+from sklearn import datasets
+from minisom import MiniSom  # from: https://github.com/JustGlowing/minisom
+from fcmeans import FCM  # from: https://pypi.org/project/fuzzy-c-means/
 
 print("Python Version : ", sys.version)
 print("Scikit-Learn Version : ", sklearn.__version__)
 
 # Part 1
-import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
-
 path_to_file = './data/clust14.txt'
 X = pd.read_csv(path_to_file, sep=' ')
 
@@ -22,12 +30,10 @@ plt.xlabel('Feature 1')
 plt.ylabel('Feature 2')
 plt.show()
 
-from scipy.cluster.hierarchy import linkage, dendrogram
 Z = linkage(X, method='complete')  # linkage matrix
 dendrogram(Z, no_labels=True)
 plt.show()
 
-from sklearn.cluster import AgglomerativeClustering
 model = AgglomerativeClustering(n_clusters=14, linkage='complete')
 model.fit(X)
 model.labels_
@@ -125,8 +131,6 @@ plt.xlabel('Feature 1')
 plt.ylabel('Feature 2')
 plt.show()
 
-from sklearn.metrics import davies_bouldin_score
-
 indices = []
 for i in range(2,10+1):
     model = AgglomerativeClustering(n_clusters=i, linkage='complete').fit(X)
@@ -146,7 +150,6 @@ plt.xlabel('Feature 1')
 plt.ylabel('Feature 2')
 plt.show()
 
-from sklearn.cluster import KMeans
 model = KMeans(n_clusters=2, max_iter=100, n_init=10).fit(X)
 model.labels_
 model.cluster_centers_  # each row is a centroid
@@ -166,7 +169,6 @@ plt.xlabel('Feature 1')
 plt.ylabel('Feature 2')
 plt.show()
 
-from sklearn.cluster import KMeans
 model = KMeans(n_clusters=3, max_iter=100, n_init=10).fit(X)
 model.labels_
 model.cluster_centers_
@@ -186,7 +188,6 @@ plt.xlabel('Feature 1')
 plt.ylabel('Feature 2')
 plt.show()
 
-from sklearn.cluster import KMeans
 model = KMeans(n_clusters=2, max_iter=100, n_init=10).fit(X)
 model.labels_
 model.cluster_centers_
@@ -201,7 +202,6 @@ plt.show()
 path_to_file = './data/clust3.txt'
 X = pd.read_csv(path_to_file, sep=' ')
 
-from sklearn import mixture
 model = mixture.GaussianMixture(n_components=3, covariance_type='full').fit(X)
 labels = mixture.GaussianMixture(n_components=3, covariance_type='full').fit_predict(X)
 
@@ -214,7 +214,6 @@ plt.show()
 path_to_file = './data/parallelclust.txt'
 X = pd.read_csv(path_to_file, sep=' ')
 
-from sklearn import mixture
 labels = mixture.GaussianMixture(n_components=2, covariance_type='full').fit_predict(X)
 
 plt.scatter(X['f1'], X['f2'], c=labels, marker='+')
@@ -225,8 +224,6 @@ plt.show()
 # Part 11
 path_to_file = './data/clust3.txt'
 X = pd.read_csv(path_to_file, sep=' ')
-
-from sklearn import mixture
 
 bic_model = []
 for i in range(1,9+1):
@@ -239,8 +236,6 @@ plt.ylabel('BIC')
 plt.show()
 
 # Part 12
-from sklearn import datasets
-
 iris = datasets.load_iris()
 X = iris.data
 y = iris.target
@@ -250,8 +245,6 @@ plt.xlabel('Feature 1')
 plt.ylabel('Feature 2')
 plt.show()
 
-# shell: pip3 install minisom   # from: https://github.com/JustGlowing/minisom
-from minisom import MiniSom
 n_neurons = 10
 m_neurons = 10
 X = X[:,-2:]
@@ -295,9 +288,6 @@ G = image[:,:,1].ravel()
 B = image[:,:,2].ravel()
 
 X = np.stack([R,G,B], axis=1)
-
-# shell: pip3 install fuzzy-c-means   # from: https://pypi.org/project/fuzzy-c-means/
-from fcmeans import FCM
 
 fcm = FCM(n_clusters=4, max_iter=100, m=2)
 fcm.fit(X)

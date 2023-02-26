@@ -5,16 +5,21 @@ supervised learning 1
 J.A., ykxvqz@pm.me
 '''
 
-# Part 1
-# Analytical solving: use Bayes' theorem and p(\omega_2|x) = 1 - p(\omega_1|x)
-
-# Part 2
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import confusion_matrix
+from sklearn.discriminant_analysis import QuadraticDiscriminantAnalysis as qda
+from sklearn.discriminant_analysis import LinearDiscriminantAnalysis as lda
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.model_selection import train_test_split
+from scipy.spatial import distance
 
+# Part 1
+# Analytical solving: use Bayes' theorem and p(\omega_2|x) = 1 - p(\omega_1|x)
+
+# Part 2
 path_to_file = './data/gaussian2D.txt'
 df = pd.read_csv(path_to_file, sep=' ')
 
@@ -94,8 +99,6 @@ confusion_matrix(y_true=y_test, y_pred=y_pred)
 # Analytical solution...
 
 # Part 5
-from sklearn.discriminant_analysis import QuadraticDiscriminantAnalysis as qda
-
 model = qda().fit(X_train, y_train)
 y_pred = model.predict(X_test)
 confusion_matrix(y_true=y_test, y_pred=y_pred)
@@ -118,8 +121,6 @@ plt.scatter(X_train.iloc[:,0], X_train.iloc[:,1], c=y_train.replace({1:'black', 
 plt.show()
 
 # Part 6
-from sklearn.discriminant_analysis import LinearDiscriminantAnalysis as lda
-
 model = lda().fit(X_train, y_train)
 y_pred = model.predict(X_test)
 confusion_matrix(y_true=y_test, y_pred=y_pred)
@@ -217,7 +218,6 @@ b = pd.read_csv(path_to_testfile, sep=' ', header=None)
 X_train, y_train = a.iloc[:,:-1], a.iloc[:,-1]
 X_test, y_test = b.iloc[:,:-1], b.iloc[:,-1]
 
-from sklearn.neighbors import KNeighborsClassifier
 model = KNeighborsClassifier(n_neighbors=3).fit(X_train, y_train)
 y_pred = model.predict(X_test)
 
@@ -267,9 +267,6 @@ plt.ylabel('test error')
 plt.show()
 
 # Part 11
-from sklearn.model_selection import train_test_split
-from scipy.spatial import distance
-
 def parzenc(X_train, y_train, X_test, h):
     classes = y_train.unique()
     priors = y_train.value_counts()[classes].values/len(y_train)

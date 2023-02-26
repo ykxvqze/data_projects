@@ -8,6 +8,7 @@ J.A., ykxvqz@pm.me
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+from sklearn.linear_model import LinearRegression
 
 # data exploration
 path_to_file = './data/survey.csv'
@@ -16,9 +17,7 @@ data.head()
 
 data.shape
 
-# fitting a linear model
-from sklearn.linear_model import LinearRegression
-
+# fit a linear model
 X = data[['Career', 'Fitness', 'Humor', 'Religiosity', 'Interests']].copy()
 y = data['Rating (1-5)']
 
