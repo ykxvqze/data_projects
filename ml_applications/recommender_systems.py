@@ -6,8 +6,8 @@ J.A., ykxvqz@pm.me
 '''
 
 # read-in data
-import pandas as pd
 import numpy as np
+import pandas as pd
 from sklearn.metrics.pairwise import cosine_similarity
 
 path_to_file = './data/invoices.csv'
@@ -57,7 +57,7 @@ items_to_recommend = [x for x in items_bought_by_neighbors if x not in items_bou
 
 items_to_recommend_descriptions = df.loc[df['stock_code'].isin(items_to_recommend), ['stock_code','description']].drop_duplicates().set_index('stock_code')
 
-items_to_recommend_descriptions.sort_values(by=['stock_code'], ascending = True)
+items_to_recommend_descriptions.sort_values(by=['stock_code'], ascending=True)
 
 # item-based collaborative filtering
 item_item_matrix = pd.DataFrame(cosine_similarity(user_item_matrix.T), columns=user_item_matrix.columns, index=user_item_matrix.columns)
@@ -67,4 +67,4 @@ stock_id = '71053'
 similar_items = item_item_matrix[stock_id].sort_values(ascending=False).index[0:10+1]
 
 items_to_recommend_descriptions = df.loc[df['stock_code'].isin(similar_items), ['stock_code','description']].drop_duplicates().set_index('stock_code')
-items_to_recommend_descriptions.sort_values(by=['stock_code'], ascending = True)
+items_to_recommend_descriptions.sort_values(by=['stock_code'], ascending=True)
