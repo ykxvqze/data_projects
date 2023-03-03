@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 '''
-segmentation
+customer segmentation
 
 J.A., ykxvqz@pm.me
 '''
 
 # read-in data
-import pandas as pd
 import numpy as np
+import pandas as pd
 from sklearn.preprocessing import scale
 from sklearn.cluster import KMeans
 from sklearn.metrics import silhouette_score
@@ -105,7 +105,7 @@ df_vip = df.loc[df['customer_id'].isin(vip)]
 items = df_vip.groupby('description').aggregate({'description': 'count'})
 items = items.rename(columns= {'description': 'count'})
 
-items = items.sort_values(by=["count"], ascending = False)
+items = items.sort_values(by=['count'], ascending = False)
 items.head(6)
 
 # note: if description index is required as column:
