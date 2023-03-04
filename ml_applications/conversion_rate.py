@@ -5,8 +5,8 @@ customer conversion rate
 J.A., ykxvqz@pm.me
 '''
 
-import pandas as pd
 import numpy as np
+import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn.linear_model import LogisticRegression
 
@@ -77,7 +77,7 @@ df = data.groupby(['education']).aggregate({'education': 'count', 'y': 'sum'})
 df.rename(columns={'education': 'count', 'y': 'n_conversions'}, inplace=True)
 df['conversion_rate'] = df['n_conversions']/df['count'] * 100
 
-labels = [f'{i}, {j} %' for i, j in zip(df.index.values, df['conversion_rate'].values.round(2))]
+labels = [f'{i}, {j} %' for i, j in zip(df.index.values, df['conversion_rate'].round(2))]
 
 plt.pie(df['conversion_rate'], labels=labels, autopct='%0.2f%%')
 plt.title('conversion rate by education')
