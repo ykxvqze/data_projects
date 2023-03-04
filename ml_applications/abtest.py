@@ -5,8 +5,8 @@ A/B testing for three different marketing campaigns.
 J.A., ykxvqz@pm.me
 '''
 
-import pandas as pd
 import numpy as np
+import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sbn
 from scipy import stats

@@ -5,8 +5,8 @@ pricing optimization
 J.A., ykxvqz@pm.me
 '''
 
-import pandas as pd
 import numpy as np
+import pandas as pd
 import matplotlib.pyplot as plt
 from scipy import stats
 from scipy.optimize import minimize
