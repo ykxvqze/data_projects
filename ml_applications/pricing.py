@@ -120,7 +120,10 @@ optimized = minimize(fun=neg_profit, x0=20, args=(15, loc, scale, 10000), method
 # alternatively:
 optimized = minimize(lambda x : -1 * profit(x, 15, loc, scale, 10000), x0=20, method='BFGS')
 
-price_opt = optimized.x  # optimal price
+# optimal price
+price_opt = optimized.x
+
+# optimal profit
 profit_opt = -1 * optimized.fun  # or profit(optimized.x, 15, loc, scale, 10000)[0]
 
 profit_values = profit(x, 15, loc, scale, 10000)
