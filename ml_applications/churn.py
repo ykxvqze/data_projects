@@ -63,7 +63,7 @@ series.idxmax()
 # binary and continuous features
 data.nunique()
 
-df_binary = data[["gender", "senior_citizen" ,"partner" ,"dependents", "phone_service","paperless_billing", "churn"]].copy()
+df_binary = data[['gender','senior_citizen','partner','dependents','phone_service','paperless_billing','churn']].copy()
 df_binary.replace({'Yes':1, 'No':0}, inplace=True)
 df_binary.replace({'Male':1, 'Female':0}, inplace=True)
 
@@ -76,9 +76,9 @@ df_continuous.std()
 df_tx = pd.concat([df_continuous, df_binary], axis=1)
 
 # multi-level categorical features
-df_categorical = data[["multiple_lines","internet_service","online_security","online_backup",
-                        "device_protection","tech_support","streaming_tv","streaming_movies",
-                        "contract","payment_method"]]
+df_categorical = data[['multiple_lines','internet_service','online_security','online_backup',
+                        'device_protection','tech_support','streaming_tv','streaming_movies',
+                        'contract','payment_method']]
 
 df_tx = pd.concat([pd.get_dummies(df_categorical), df_tx], axis=1)
 
