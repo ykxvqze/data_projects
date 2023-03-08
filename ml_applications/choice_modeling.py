@@ -61,16 +61,16 @@ sz7inch_to_sz9inch[0]
 # Option 2: logistic regression (same result if all dummy vars are kept)
 #
 
-X = pd.get_dummies(data.drop(['choice','choiceset_id','alternative_id','consumer_id'], axis=1))
+X = pd.get_dummies(data.drop(['choice','alternative_id','choiceset_id','consumer_id'], axis=1))
 y = data['choice']
 
-model = LogisticRegression(multi_class = 'multinomial', solver='newton-cg', fit_intercept = False).fit(X, y)
+model = LogisticRegression(multi_class='multinomial', solver='newton-cg', fit_intercept=False).fit(X, y)
 
 # parameter interpretation
 model_parameters = pd.DataFrame(model.coef_[0], index=X.columns, columns=['coefficients'])
 model_parameters
 
-# prediction (cannot use a generic function because data_market is small and won't have all dummy vars defined)
+# prediction
 data_market = X.loc[[21,22,45,85],:].copy()
 prob = model.predict_proba(data_market)[:,1]
 prob = np.exp(prob)/(np.exp(prob)).sum()  # softmax
