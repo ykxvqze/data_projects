@@ -13,9 +13,9 @@ from sklearn.neighbors import KernelDensity
 from scipy.spatial.distance import cdist
 
 # Part 1
-x = np.random.normal(loc=0,scale=1,size=1000)
+x = np.random.normal(loc=0, scale=1, size=1000)
 nb = 10
-plt.hist(x,bins=nb,density=False)
+plt.hist(x, bins=nb, density=False)
 plt.xlabel('x')
 plt.ylabel('Frequency')
 plt.show()
@@ -24,17 +24,17 @@ plt.show()
 # Rank statistics are more robust to outliers.
 
 # Part 3
-y = np.random.normal(loc=0,scale=1,size=10000)
+y = np.random.normal(loc=0, scale=1, size=10000)
 y.mean()
 y.var()
 
 fig, axs = plt.subplots(1,2)
 axs[0].set_xlabel('y')
 axs[0].set_ylabel('Frequency')
-axs[0].hist(y,density=False)
+axs[0].hist(y, density=False)
 
 axs[1].set_xlabel('y')
-axs[1].boxplot(y,patch_artist=True,vert=True)
+axs[1].boxplot(y, patch_artist=True, vert=True)
 plt.show()
 
 # Part 4
@@ -45,10 +45,10 @@ b.var()
 fig, axs = plt.subplots(1,2)
 axs[0].set_xlabel('b')
 axs[0].set_ylabel('Frequency')
-axs[0].hist(b,density=False)
+axs[0].hist(b, density=False)
 
 axs[1].set_xlabel('b')
-axs[1].boxplot(b,patch_artist=False,vert=True)
+axs[1].boxplot(b, patch_artist=False, vert=True)
 plt.show()
 
 # Part 5
@@ -59,7 +59,7 @@ ax = plt.axes(projection='3d')
 ax.scatter(df['feature1'], df['feature2'], df['feature3'], c=df['label'])
 # choose colors
 #colors = np.repeat (['blue','red'], 500)
-#ax.scatter(b['feature1'],b['feature2'],b['feature3'],c=colors)
+#ax.scatter(df['feature1'], df['feature2'], df['feature3'], c=colors)
 ax.set_xlabel('feature1')
 ax.set_ylabel('feature2')
 ax.set_zlabel('feature3')
@@ -88,7 +88,7 @@ scatter_matrix(df.iloc[:,:-1], diagonal='kde')
 plt.show()
 
 covmat = np.cov(df.iloc[:,:-1].T).round(2)
-#np.cov(df.iloc[:,:-1], rowvar=False).round(2)  # alternatively
+#np.cov(df.iloc[:,:-1], rowvar=False).round(2)  # equivalent
 corrmat = df.drop(['label'], axis=1).corr().round(2)
 #corrmat = np.corrcoef(df.drop(['label'], axis=1), rowvar=False).round(2)  # alternatively using numpy
 
