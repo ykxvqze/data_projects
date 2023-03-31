@@ -28,13 +28,13 @@ y = np.random.normal(loc=0, scale=1, size=10000)
 y.mean()
 y.var()
 
-fig, axs = plt.subplots(1,2)
-axs[0].set_xlabel('y')
-axs[0].set_ylabel('Frequency')
-axs[0].hist(y, density=False)
+fig, ax = plt.subplots(1,2)
+ax[0].hist(y, density=False)
+ax[0].set_xlabel('y')
+ax[0].set_ylabel('Frequency')
 
-axs[1].set_xlabel('y')
-axs[1].boxplot(y, patch_artist=True, vert=True)
+ax[1].boxplot(y, patch_artist=True, vert=True)
+ax[1].set_xlabel('y')
 plt.show()
 
 # Part 4
@@ -42,13 +42,13 @@ b = np.exp(-0.5*y)
 b.mean()
 b.var()
 
-fig, axs = plt.subplots(1,2)
-axs[0].set_xlabel('b')
-axs[0].set_ylabel('Frequency')
-axs[0].hist(b, density=False)
+fig, ax = plt.subplots(1,2)
+ax[0].hist(b, density=False)
+ax[0].set_xlabel('b')
+ax[0].set_ylabel('Frequency')
 
-axs[1].set_xlabel('b')
-axs[1].boxplot(b, patch_artist=False, vert=True)
+ax[1].boxplot(b, patch_artist=False, vert=True)
+ax[1].set_xlabel('b')
 plt.show()
 
 # Part 5
@@ -58,7 +58,7 @@ df = pd.read_csv(path_to_file, sep=' ')
 ax = plt.axes(projection='3d')
 ax.scatter(df['feature1'], df['feature2'], df['feature3'], c=df['label'])
 # choose colors
-#colors = np.repeat (['blue','red'], 500)
+#colors = np.repeat(['blue','red'], 500)
 #ax.scatter(df['feature1'], df['feature2'], df['feature3'], c=colors)
 ax.set_xlabel('feature1')
 ax.set_ylabel('feature2')
@@ -68,12 +68,14 @@ plt.show()
 # to add legend, make a scatter plot for each class
 df1 = df.loc[df['label']==1]
 df2 = df.loc[df['label']==2]
+
 ax = plt.axes(projection='3d')
 scatter1 = ax.scatter(df1['feature1'], df1['feature2'], df1['feature3'], c='blue')
 scatter2 = ax.scatter(df2['feature1'], df2['feature2'], df2['feature3'], c='red')
 ax.legend([scatter1, scatter2], ['label=1', 'label=2'])
 plt.show()
 
+# 2D scatter plot
 plt.scatter(df['feature1'], df['feature2'], c=df['label'])
 plt.xlabel('feature1')
 plt.ylabel('feature2')
@@ -88,9 +90,10 @@ scatter_matrix(df.iloc[:,:-1], diagonal='kde')
 plt.show()
 
 covmat = np.cov(df.iloc[:,:-1].T).round(2)
-#np.cov(df.iloc[:,:-1], rowvar=False).round(2)  # equivalent
+#np.cov(df.iloc[:,:-1], rowvar=False).round(2)
+
 corrmat = df.drop(['label'], axis=1).corr().round(2)
-#corrmat = np.corrcoef(df.drop(['label'], axis=1), rowvar=False).round(2)  # alternatively using numpy
+#corrmat = np.corrcoef(df.drop(['label'], axis=1), rowvar=False).round(2)
 
 plt.xticks(ticks=range(len(corrmat.columns)), labels=corrmat.columns, rotation=90)
 plt.yticks(ticks=range(len(corrmat.columns)), labels=corrmat.columns)
@@ -114,11 +117,12 @@ mu.var()  # theoretical: 0.08333/(n=100)
 
 print(f'mean of mu: \t {np.mean(mu)}')
 print(f'variance of mu: \t {np.var(mu)}')
+
 plt.hist(mu, density=False)
 plt.show()
 
 # Part 8
-n = [10,100,250,500,1000]
+n = [10, 100, 250, 500, 1000]
 mean_m, mean_v, sd_m, sd_v = ([] for i in range(4));
 
 for i in n:
@@ -150,7 +154,7 @@ S = np.cov(x, rowvar=False)
 w, v = np.linalg.eig(S)
 
 # Part 10
-x = np.random.multivariate_normal(mean=[0,0], cov=[[3,0], [0,1]], size=1000)
+x = np.random.multivariate_normal(mean=[0,0], cov=[[3,0],[0,1]], size=1000)
 S = np.cov(x.T)
 w, v = np.linalg.eig(S)
 
@@ -254,3 +258,4 @@ plt.ylabel('density, k=3')
 plt.ylim([-0.2, max(density)])
 plt.scatter(a, np.zeros(len(a)), color='red', marker='+')
 plt.show()
+
