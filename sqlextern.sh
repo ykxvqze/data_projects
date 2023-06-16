@@ -11,8 +11,7 @@ DESCRIPTION:
 
 Bash script that writes a table from MySQL into a flat file, calls Python
 for data processing, and writes back the result into MySQL server. This
-bypasses the need to use Procedural Language or customized SQL queries
-within the database server (for non-Big data).
+bypasses the need to use customized SQL queries within the database server.
 
 EXAMPLE:
 
