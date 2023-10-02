@@ -40,6 +40,5 @@
 
 ## Data toolkit
 
-A data toolkit for processing CSV files written in Bash. The tools can be passed a CSV file or CSV data piped via stdin.
+A <a class="external reference" href="https://github.com/ykxvqze/bash_projects#data-toolkit">data toolkit</a> for processing CSV files written in Bash. The tools can be passed a CSV file or CSV data piped via stdin.
 
-<a class="external reference" href="https://github.com/ykxvqze/bash_projects#data-toolkit">tools</a><br>
