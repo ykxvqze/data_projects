@@ -10,7 +10,10 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn.linear_model import LogisticRegression
 
+#
 # data exploration
+#
+
 path_to_file = './data/conversion.txt'
 data = pd.read_csv(path_to_file)
 data.head()
@@ -23,6 +26,10 @@ data['y'].sum()/data['y'].count() * 100
 
 values, counts = np.unique(data['y'], return_counts=True)
 dict(zip(values,counts))
+
+#
+# viualization
+#
 
 # by number of contacts
 df = data.groupby(['campaign']).aggregate({'campaign': 'count', 'y': 'sum'})
@@ -47,9 +54,13 @@ plt.ylabel('conversion rate (%)')
 plt.show()
 
 # by age group
-data['age_group'] =  data['age'].apply(lambda x: '<=20' if x<=20 else '(20-30]' if (x>20 and x<=30) \
-                                       else '(30-40]' if (x>30 and x<=40) else '(40-50]' if (x>40 and x<=50) \
-                                       else '(50-60]' if (x>50 and x<=60) else '(60-70]' if (x>60 and x<=70) else '70+')
+data['age_group'] =  data['age'].apply(lambda x: '<=20' if x<=20            \
+                                         else '(20-30]' if (x>20 and x<=30) \
+                                         else '(30-40]' if (x>30 and x<=40) \
+                                         else '(40-50]' if (x>40 and x<=50) \
+                                         else '(50-60]' if (x>50 and x<=60) \
+                                         else '(60-70]' if (x>60 and x<=70) \
+                                         else '70+')
 
 df = data.groupby(['age_group']).aggregate({'age_group': 'count', 'y': 'sum'})
 df.rename(columns={'age_group': 'count', 'y': 'n_conversions'}, inplace=True)
@@ -68,7 +79,9 @@ df = data.groupby(['marital']).aggregate({'marital': 'count', 'y': 'sum'})
 df.rename(columns={'marital': 'count', 'y': 'n_conversions'}, inplace=True)
 df['conversion_rate'] = df['n_conversions']/df['count'] * 100
 
-plt.pie(df['conversion_rate'], labels=df.index, autopct='%0.2f%%')
+labels = [f'{i}, {j} %' for i, j in zip(df.index.values, df['conversion_rate'].round(2))]
+
+plt.pie(df['conversion_rate'], labels=labels, autopct='%0.2f%%')
 plt.title('conversion rate by marital status')
 plt.show()
 
@@ -101,7 +114,10 @@ plt.setp(h["boxes"][0], color="red")
 plt.setp(h['boxes'][1], color="blue")
 plt.show() 
 
+#
 # logistic regression
+#
+
 df_categorical = pd.get_dummies(data[['marital','job','housing']])
 df = pd.concat([df_categorical, data[['age','campaign','previous']]], axis=1)
 
@@ -121,4 +137,4 @@ df.loc[df['coefficients']>0]
 df.loc[df['coefficients']<0]
 
 df.sort_values(by=['coefficients'], ascending=True)
-#dict(zip(X.columns, model.coef_[0]))
+# dict(zip(X.columns, model.coef_[0]))

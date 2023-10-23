@@ -5,19 +5,21 @@ customer segmentation
 J.A., ykxvqz@pm.me
 '''
 
-# read-in data
 import numpy as np
 import pandas as pd
 from sklearn.preprocessing import scale
 from sklearn.cluster import KMeans
 from sklearn.metrics import silhouette_score
 
+#
+# data processing
+#
+
 path_to_file = './data/invoices.csv'
 data = pd.read_csv(path_to_file)
 data.head()
 data.shape
 
-# data preparation
 data.loc[data['quantity']<0].head(6)
 df = data.loc[data['quantity']>0]
 df.loc[df['customer_id'].isna()]
@@ -33,7 +35,10 @@ df.shape
 
 df['quantity'].value_counts()
 
-# feature extraction
+#
+# features
+#
+
 df['sales'] = df['quantity'] * df['unit_price']
 
 df_customers = df.groupby(['customer_id']).aggregate({'sales': 'sum', 'invoice_date': 'nunique'})
@@ -43,16 +48,19 @@ df_customers['avg_sales'] = df_customers['total_sales']/df_customers['order_coun
 df_customers.describe()
 df_customers.shape
 
-df_rank = df_customers.rank(method='first')  # default is 'average'
+df_rank = df_customers.rank(method='first')
 
 df_norm = pd.DataFrame(scale(df_rank), index=df_rank.index, columns=df_rank.columns)
 
 df_norm.describe().loc[['mean','std']]
 
-# customer segmentation by k-means clustering
+#
+# customer segmentation (k-means clustering)
+#
+
 model = KMeans(n_clusters=4, max_iter=100, n_init=10).fit(df_norm)
 model.labels_
-model.cluster_centers_  # each row is a centroid
+model.cluster_centers_  # each row => centroid
 
 values, counts = np.unique(model.labels_, return_counts=True)
 dict(zip(values, counts))
@@ -61,7 +69,6 @@ df_customers['label'] = model.labels_
 df_customers.groupby(['label']).mean()
 
 # optimal number of clusters by silhouette
-
 k_optimal, highest_score = 0, -1
 for k in range(4,11):
     labels = KMeans(n_clusters=k, max_iter = 100, n_init=10).fit_predict(df_norm)
@@ -108,5 +115,5 @@ items = items.rename(columns= {'description': 'count'})
 items = items.sort_values(by=['count'], ascending = False)
 items.head(6)
 
-# note: if description index is required as column:
+# description index as column
 items.reset_index()
