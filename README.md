@@ -24,7 +24,7 @@
 <a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_concepts/supervised_learning_2.py">supervised_learning_2.py
 </a>: supervised learning (part II)<br>
 <a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_concepts/regression.py">regression.py</a>: regression<br>
-<a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_concepts/gaussian_processes.py">gaussian_processes.py</a>: Gaussian processes.
+<a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_concepts/gaussian_processes.py">gaussian_processes.py</a>: Gaussian processes
 
 ## Processing SQL data via Bash/Python
 
