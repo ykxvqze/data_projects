@@ -35,8 +35,12 @@
 
 <!--## Privacy-preserving method for merging datasets
 
-<a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/dbmerger.md">dbmerger.md</a>: A proposed method for merging datasets that contain sensitive information from two different parties without revealing any identifying information to either party. The task can be accomplished via a third party, e.g. a bot, without the bot receiving any identifying information either.
+<a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/dbmerger.md">dbmerger.md</a>: a proposed method for merging datasets that contain sensitive information from two different parties without revealing any identifying information to either party. The task can be accomplished via a third party, e.g. a bot, without the bot receiving any identifying information either.
 -->
+
+## SQL Queries
+
+<a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/queries.sql">queries.sql</a>: nested SQL queries.
 
 ## Data toolkit
 
