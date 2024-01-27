@@ -93,7 +93,7 @@ WHERE emp_id IN (
 +------------+-----------+
 */
 
--- IDs and names of clients who deal with the branch managed by Pete Marley
+-- IDs and names of clients who deal with the branch whose manager is Pete Marley
 SELECT client_id, client_name
 FROM client
 WHERE branch_id = (
