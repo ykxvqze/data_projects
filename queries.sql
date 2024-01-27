@@ -72,7 +72,7 @@ SELECT * FROM relations;
 -- Queries
 --
 
--- Names of employees who have sold over 50000
+-- Names of employees with overall sales exceeding 50000
 SELECT first_name, last_name
 FROM employee
 WHERE emp_id IN (
@@ -117,7 +117,7 @@ WHERE branch_id = (
 +-----------+-------------+
 */
 
--- Names of employees who work with clients handled by the Corporate-2 branch
+-- Names of employees with relations to clients who deal with the Corporate-2 branch
 SELECT first_name, last_name
 FROM employee
 WHERE emp_id IN ( 
@@ -142,7 +142,7 @@ WHERE emp_id IN (
 +------------+-----------+
 */
 
--- Names of clients who have spent more than 100000
+-- Clients with an expenditure exceeding 100000
 SELECT client_name
 FROM client
 WHERE client_id IN (
