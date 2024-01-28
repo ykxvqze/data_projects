@@ -99,7 +99,7 @@ FROM client
 WHERE branch_id = (
                    SELECT branch_id
                    FROM branch
-                   WHERE mgr_id = (
+                   WHERE mng_id = (
                                    SELECT emp_id
                                    FROM employee
                                    WHERE first_name = 'Pete' AND last_name ='Marley'
