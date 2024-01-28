@@ -20,7 +20,10 @@ from sklearn.ensemble import VotingClassifier
 from sklearn.svm import SVR
 from sklearn.model_selection import GridSearchCV
 
-# Part 1
+#
+#
+#
+
 path_to_file = './data/boomerang2D.txt'
 df = pd.read_csv(path_to_file, sep=' ')
 
@@ -68,7 +71,10 @@ plt.ylabel("TPR")
 plt.legend(loc="lower right")
 plt.show()
 
-# Part 2
+#
+#
+#
+
 path_to_file = './data/boomerang2Dlarge.txt'
 df = pd.read_csv(path_to_file, sep=' ')
 
@@ -92,7 +98,10 @@ plt.xlabel('training set size')
 plt.ylabel('classification error rate')
 plt.show()
 
-# Part 3
+#
+#
+#
+
 path_to_file = './data/boomerang2Dlarge.txt'
 df = pd.read_csv(path_to_file, sep=' ')
 
@@ -121,7 +130,10 @@ plt.scatter(xx.ravel(), yy.ravel(), c=labels_pred, marker='+', alpha=0.4)
 plt.scatter(X_train.iloc[:,0], X_train.iloc[:,1], c=y_train.replace({1:'black', 2:'red'}))
 plt.show()
 
-# Part 4
+#
+#
+#
+
 model_qda = qda().fit(X_train, y_train)
 y_prob_qda = model_qda.predict_proba(X_test)
 y_pred_qda = model_qda.predict(X_test)
@@ -143,7 +155,10 @@ model_sum = VotingClassifier(estimators=[('qda', model_qda), ('lda', model_lda)]
 model_sum = model_sum.fit(X_train, y_train)
 y_pred_sum = model_sum.predict(X_test)
 
-# Part 5
+#
+#
+#
+
 def synth_data(n_samples, sigma):
     X = np.random.uniform(low=0, high=2, size=n_samples)
     X = np.sort(X)
@@ -169,7 +184,10 @@ plt.show()
 
 rmse = np.sqrt(((y_train - y_pred)**2).mean())
 
-# Part 6
+#
+#
+#
+
 parameters = {'kernel' : ['rbf'],
               'gamma'  : np.linspace(1,10,20),
               'epsilon': np.linspace(0,1,10),
@@ -189,7 +207,10 @@ plt.ylabel('y')
 plt.legend()
 plt.show()
 
-# Part 7
+#
+#
+#
+
 X_test = np.arange(-1, 3, 0.05)
 y_pred = model.predict(X_test.reshape(-1,1))
 

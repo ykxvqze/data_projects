@@ -12,7 +12,10 @@ import matplotlib.pyplot as plt
 from sklearn.neighbors import KernelDensity
 from scipy.spatial.distance import cdist
 
-# Part 1
+#
+#
+#
+
 x = np.random.normal(loc=0, scale=1, size=1000)
 nb = 10
 plt.hist(x, bins=nb, density=False)
@@ -20,10 +23,16 @@ plt.xlabel('x')
 plt.ylabel('Frequency')
 plt.show()
 
-# Part 2
+#
+#
+#
+
 # Rank statistics are more robust to outliers.
 
-# Part 3
+#
+#
+#
+
 y = np.random.normal(loc=0, scale=1, size=10000)
 y.mean()
 y.var()
@@ -37,7 +46,10 @@ ax[1].boxplot(y, patch_artist=True, vert=True)
 ax[1].set_xlabel('y')
 plt.show()
 
-# Part 4
+#
+#
+#
+
 b = np.exp(-0.5*y)
 b.mean()
 b.var()
@@ -51,7 +63,10 @@ ax[1].boxplot(b, patch_artist=False, vert=True)
 ax[1].set_xlabel('b')
 plt.show()
 
-# Part 5
+#
+#
+#
+
 path_to_file = './data/boomerang3D.txt'
 df = pd.read_csv(path_to_file, sep=' ')
 
@@ -65,7 +80,7 @@ ax.set_ylabel('feature2')
 ax.set_zlabel('feature3')
 plt.show()
 
-# to add legend, make a scatter plot for each class
+# to add a legend, create a scatter plot for each class
 df1 = df.loc[df['label']==1]
 df2 = df.loc[df['label']==2]
 
@@ -81,7 +96,10 @@ plt.xlabel('feature1')
 plt.ylabel('feature2')
 plt.show()
 
-# Part 6
+#
+#
+#
+
 path_to_file = './data/dataset8D.txt'
 df = pd.read_csv(path_to_file, sep=' ')
 df.info()
@@ -101,7 +119,10 @@ plt.imshow(corrmat, cmap='hot')
 plt.colorbar()
 plt.show()
 
-# Part 7
+#
+#
+#
+
 x = np.random.uniform(low=0, high=1, size=100)
 x.mean()  # theoretical: (b-a)/2 = 1/2 = 0.5
 x.var()  # theoretical: (b-a)^2/12 = 1/12 = 0.08333
@@ -121,7 +142,10 @@ print(f'variance of mu: \t {np.var(mu)}')
 plt.hist(mu, density=False)
 plt.show()
 
-# Part 8
+#
+#
+#
+
 n = [10, 100, 250, 500, 1000]
 mean_m, mean_v, sd_m, sd_v = ([] for i in range(4));
 
@@ -146,14 +170,20 @@ plt.xlabel('n')
 plt.ylabel('mean_v')
 plt.show()
 
-# Part 9
+#
+#
+#
+
 mean = np.zeros(2)
 cov = np.eye(2)
 x = np.random.multivariate_normal(mean=mean, cov=cov, size=1000)
 S = np.cov(x, rowvar=False)
 w, v = np.linalg.eig(S)
 
-# Part 10
+#
+#
+#
+
 x = np.random.multivariate_normal(mean=[0,0], cov=[[3,0],[0,1]], size=1000)
 S = np.cov(x.T)
 w, v = np.linalg.eig(S)
@@ -170,7 +200,10 @@ plt.plot(np.sqrt(w[1])*np.array([0, v[0,1]]), np.sqrt(w[1])*np.array([0, v[1,1]]
 plt.axis('equal')
 plt.show()
 
-# Part 11
+#
+#
+#
+
 x = np.random.multivariate_normal(mean=[0,0], cov=[[3,-2],[-2,2]], size=1000)
 S = np.cov(x.T)
 w, v = np.linalg.eig(S)
@@ -181,7 +214,10 @@ plt.plot(np.sqrt(w[1])*np.array([0, v[0,1]]), np.sqrt(w[1])*np.array([0, v[1,1]]
 plt.axis('equal')
 plt.show()
 
-# Part 12
+#
+#
+#
+
 z = np.random.multivariate_normal(mean=[0,0], cov=[[3,-2],[-2,2]], size=1000)
 S = np.cov(z.T)
 w, v = np.linalg.eig(S)
@@ -195,7 +231,10 @@ plt.axis('equal')
 plt.legend()
 plt.show()
 
-# Part 13
+#
+#
+#
+
 path_to_file = './data/dataset1D.txt'
 df = pd.read_csv(path_to_file, sep=' ')
 
@@ -220,7 +259,10 @@ plt.xlabel('a')
 plt.ylabel('density')
 plt.show()
 
-# Part 14
+#
+#
+#
+
 h = [0.1, 0.25, 0.5, 1, 1.5, 2, 3, 4, 5]
 ll = []
 for i in h:
@@ -237,7 +279,10 @@ plt.show()
 
 h[np.array(ll).argmax()]
 
-# Part 15
+#
+#
+#
+
 def knnd(a, b, k=1):
     n = len(a)
     D = cdist(b, a)
@@ -258,4 +303,3 @@ plt.ylabel('density, k=3')
 plt.ylim([-0.2, max(density)])
 plt.scatter(a, np.zeros(len(a)), color='red', marker='+')
 plt.show()
-

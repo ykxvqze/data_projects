@@ -21,7 +21,10 @@ from fcmeans import FCM  # from: https://pypi.org/project/fuzzy-c-means/
 print("Python Version : ", sys.version)
 print("Scikit-Learn Version : ", sklearn.__version__)
 
-# Part 1
+#
+#
+#
+
 path_to_file = './data/clust14.txt'
 X = pd.read_csv(path_to_file, sep=' ')
 
@@ -43,7 +46,10 @@ plt.xlabel('Feature 1')
 plt.ylabel('Feature 2')
 plt.show()
 
-# Part 2
+#
+#
+#
+
 # scipy: "The distance between clusters Z[i, 0] and Z[i, 1] is given by Z[i, 2]."
 Fc = Z[::-1,2]
 
@@ -62,7 +68,10 @@ plt.xlabel('Feature 1')
 plt.ylabel('Feature 2')
 plt.show()
 
-# Part 3
+#
+#
+#
+
 path_to_file = './data/parallelclust.txt'
 X = pd.read_csv(path_to_file, sep=' ')
 
@@ -99,7 +108,10 @@ plt.xlabel('Feature 1')
 plt.ylabel('Feature 2')
 plt.show()
 
-# Part 4
+#
+#
+#
+
 path_to_file = './data/gaussianclust.txt'
 X = pd.read_csv(path_to_file, sep=' ')
 
@@ -122,7 +134,10 @@ plt.xlabel('Feature 1')
 plt.ylabel('Feature 2')
 plt.show()
 
-# Part 5
+#
+#
+#
+
 path_to_file = './data/clust3.txt'
 X = pd.read_csv(path_to_file, sep=' ')
 
@@ -141,7 +156,10 @@ plt.xlabel('number of clusters')
 plt.ylabel('Davies-Bouldin index')
 plt.show()
 
-# Part 6
+#
+#
+#
+
 path_to_file = './data/gaussianclust.txt'
 X = pd.read_csv(path_to_file, sep=' ')
 
@@ -160,7 +178,10 @@ plt.xlabel('Feature 1')
 plt.ylabel('Feature 2')
 plt.show()
 
-# Part 7
+#
+#
+#
+
 path_to_file = './data/clust3.txt'
 X = pd.read_csv(path_to_file, sep=' ')
 
@@ -179,7 +200,10 @@ plt.xlabel('Feature 1')
 plt.ylabel('Feature 2')
 plt.show()
 
-# Part 8
+#
+#
+#
+
 path_to_file = './data/parallelclust.txt'
 X = pd.read_csv(path_to_file, sep=' ')
 
@@ -198,7 +222,10 @@ plt.xlabel('Feature 1')
 plt.ylabel('Feature 2')
 plt.show()
 
-# Part 9
+#
+#
+#
+
 path_to_file = './data/clust3.txt'
 X = pd.read_csv(path_to_file, sep=' ')
 
@@ -210,7 +237,10 @@ plt.xlabel('Feature 1')
 plt.ylabel('Feature 2')
 plt.show()
 
-# Part 10
+#
+#
+#
+
 path_to_file = './data/parallelclust.txt'
 X = pd.read_csv(path_to_file, sep=' ')
 
@@ -221,7 +251,10 @@ plt.xlabel('Feature 1')
 plt.ylabel('Feature 2')
 plt.show()
 
-# Part 11
+#
+#
+#
+
 path_to_file = './data/clust3.txt'
 X = pd.read_csv(path_to_file, sep=' ')
 
@@ -235,7 +268,10 @@ plt.xlabel('number of components')
 plt.ylabel('BIC')
 plt.show()
 
-# Part 12
+#
+#
+#
+
 iris = datasets.load_iris()
 X = iris.data
 y = iris.target
@@ -257,7 +293,10 @@ plt.imshow(som.distance_map().T, cmap='hot')  # heatmap
 plt.colorbar()
 plt.show()
 
-# Part 13
+#
+#
+#
+
 path_to_file = './data/cust3.txt'
 X = pd.read_csv(path_to_file, sep=' ')
 
@@ -277,7 +316,10 @@ plt.imshow(som.distance_map().T, cmap='hot')
 plt.colorbar()
 plt.show()
 
-# Part 14
+#
+#
+#
+
 path_to_file = './data/tissue.png'
 image = plt.imread(path_to_file)
 plt.imshow(image)

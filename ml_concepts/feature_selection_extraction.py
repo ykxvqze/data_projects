@@ -18,7 +18,10 @@ from sklearn.discriminant_analysis import LinearDiscriminantAnalysis as LDA
 from sklearn.manifold import MDS
 from geneticalgorithm import geneticalgorithm as ga  # https://pypi.org/project/geneticalgorithm/
 
-# Part 1
+#
+# 
+#
+
 iris = datasets.load_iris()
 meas = iris.data
 y = iris.target
@@ -32,7 +35,10 @@ rfe = RFE(estimator=svc, n_features_to_select=4, step=1)
 rfe.fit(X, y)
 rfe.support_.nonzero()
 
-# Part 2
+#
+#
+#
+
 path_to_file = './data/sonar.txt'
 df = pd.read_csv(path_to_file, sep=' ')
 
@@ -48,7 +54,10 @@ plt.xlabel('number of features')
 plt.ylabel('ratio of retained variance to total variance')
 plt.show()
 
-# Part 3
+#
+#
+#
+
 df_scaled = StandardScaler().fit_transform(df)
 
 pca = PCA().fit(df_scaled)
@@ -61,7 +70,10 @@ plt.ylabel('ratio of retained variance to total variance')
 plt.legend(['original','normalized'])
 plt.show()
 
-# Part 4
+#
+#
+#
+
 iris = datasets.load_iris()
 X = iris.data
 y = iris.target
@@ -87,7 +99,10 @@ plt.legend()
 plt.show()
 '''
 
-# Part 5
+#
+#
+#
+
 path_to_file = './data/circles.txt'
 df = pd.read_csv(path_to_file, sep=' ')
 
@@ -105,7 +120,10 @@ plt.ylabel('Feature 2')
 plt.axis('equal')
 plt.show()
 
-# Part 6
+#
+#
+#
+
 mds = MDS(n_components=2, max_iter=3000, dissimilarity="euclidean")
 df_mds = mds.fit_transform(df)
 
@@ -115,7 +133,10 @@ plt.ylabel('Feature 2')
 plt.axis('equal')
 plt.show()
 
-# Part 7
+#
+#
+#
+
 path_to_file = './data/lines.txt'
 df = pd.read_csv(path_to_file, sep=' ')
 
@@ -133,7 +154,10 @@ plt.ylabel('Feature 2')
 plt.axis('equal')
 plt.show()
 
-# Part 8
+#
+#
+#
+
 mds = MDS(n_components=2, max_iter=3000, dissimilarity="euclidean")
 df_mds = mds.fit_transform(df)
 
@@ -143,7 +167,10 @@ plt.ylabel('Feature 2')
 plt.axis('equal')
 plt.show()
 
-# Part 9
+#
+#
+#
+
 def Rastrigin(x):
     err = 20 + x[0]**2 + x[1]**2 - 10*(np.cos(2*np.pi*x[0]) + np.cos(2*np.pi*x[1]))
     return err
@@ -172,7 +199,10 @@ plt.imshow(e, cmap='hot')
 plt.colorbar()
 plt.show()
 
-# Parts 10/11
+#
+#
+#
+
 varbound = np.array([[-3,3]]*2)
 algorithm_param = {'max_num_iteration':1000,
                    'population_size':20,
@@ -186,7 +216,6 @@ algorithm_param = {'max_num_iteration':1000,
 model = ga(function=Rastrigin, dimension=2, variable_type='real', variable_boundaries=varbound, algorithm_parameters=algorithm_param)
 model.run()
 
-# Part 12
 # ... when there is a prevalence of local minima in the objective function.
 # ... when it is difficult or impossible to implement gradient descent such as:
 # ... when the error function is discontinuous, non-differentiable, stochastic, or highly nonlinear.

@@ -13,8 +13,10 @@ from sklearn.linear_model import LinearRegression
 from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
 
-# Part 1
-# part (a)
+#
+#
+#
+
 def linear_regression(X, y):
     X = np.stack([X, np.ones(X.shape[0])], axis=1)
     beta = np.linalg.inv(X.T.dot(X)).dot(X.T).dot(y)
@@ -30,7 +32,6 @@ y = beta0 + beta1*X + noise
 plt.scatter(X,y)
 plt.show()
 
-# part (b)
 beta1_pred, beta0_pred = linear_regression(X,y)
 
 # alternatively (scipy):
@@ -49,7 +50,10 @@ plt.scatter(X,y)
 plt.plot(X_test, y_pred, c='r', linewidth=2)
 plt.show()
 
-# Part 2
+#
+#
+#
+
 size = [5,10,20,50,100]
 b0_mean, b1_mean, b0_std, b1_std = ([] for i in range(4))
 
@@ -76,7 +80,10 @@ plt.show()
 # conclusion: variance of coefficient estimates decreases with dataset size;
 # noise increases the variance of the estimates.
 
-# Part 3
+#
+#
+#
+
 beta1, beta0 = -1, 2
 sigma = 0.1
 
@@ -129,7 +136,10 @@ plt.ylabel('R_sq_mean')
 plt.ylim([-0.5,1.5])
 plt.show()
 
-# Part 4
+#
+#
+#
+
 def kernel_regression(X_train, y_train, X_test, h):  # 1D case
     y_pred = []
     for i in range(len(X_test)):
@@ -153,9 +163,12 @@ y_test = kernel_regression(X_train, y_train, X_test, h)
 plt.scatter(X_train, y_train)
 plt.plot(X_test, y_test, c='r', linewidth=2)
 plt.show()
-# a good value for h is 0.1: if it's lower you're overfitting, if it's higher you're underfitting.
+# a good value for h is 0.1: if it's lower => overfitting, if it's higher => underfitting.
 
-# Part 5
+#
+#
+#
+
 def optimize_h(X, y, h):  #1D case
     rep = 5
     mse = np.zeros([rep,len(h)])
@@ -173,7 +186,10 @@ X_train, y_train = synth_data(n_samples=50, sigma=0.1)
 
 optimize_h(X_train, y_train, [0.01,0.05,0.1,0.2,0.3])
 
-# Part 6
+#
+#
+#
+
 path_to_file = './data/prostate.txt'
 df = pd.read_csv(path_to_file, sep=' ')
 
@@ -186,7 +202,10 @@ plt.colorbar()
 plt.show()
 # features 1,5,6 seem mostly correlated with the target variable.
 
-# Part 7
+#
+#
+#
+
 X = df[df['training_set']==1].drop(['target','training_set'],axis=1)
 y = df[df['training_set']==1]['target']
 
@@ -211,7 +230,10 @@ plt.legend()
 plt.grid()
 plt.show()
 
-# Part 8
+#
+#
+#
+
 # heatmap
 plt.xticks(ticks=range(len(L)), labels=L, rotation=90)
 plt.yticks(ticks=range(p), labels=['beta'+str(i+1) for i in range(p)])

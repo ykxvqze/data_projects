@@ -12,7 +12,10 @@ from sklearn.model_selection import train_test_split
 from sklearn.gaussian_process import GaussianProcessRegressor
 from sklearn.gaussian_process.kernels import RBF, ExpSineSquared
 
-# Part 1
+#
+#
+#
+
 def synth_data(n_samples, sigma):
     X = np.random.uniform(low=0, high=2, size=n_samples)
     X = np.sort(X)
@@ -31,7 +34,10 @@ def kernel_rbf(x1, x2, l):
     Sigma = np.array(Sigma)
     return Sigma
 
-# Part 2
+#
+#
+#
+
 X_test = np.linspace(-0.5, 2.5, 200)
 Sigma = kernel_rbf(X_test, X_test, l=1)
 
@@ -46,7 +52,10 @@ plt.xlabel('input, x')
 plt.ylabel('output, f(x)')
 plt.show()
 
-# Part 3
+#
+#
+#
+
 l, sigma_noise = 0.1, 0.5
 
 k_xx = kernel_rbf(X_train, X_train, l)
@@ -77,7 +86,10 @@ plt.xlabel('input, x')
 plt.ylabel('output, f(x)')
 plt.show()
 
-# Part 4
+#
+#
+#
+
 # use train_test_split() twice
 # start with original dataset as X, y
 X, y = X_train, y_train
@@ -139,7 +151,10 @@ mae_value = np.median(abs(y_pred-y_test))
 df_error = pd.DataFrame([[rmse_value, mae_value]], columns=['rmse','mae'], index=['test_error'])
 print(df_error)
 
-# Part 5
+#
+#
+#
+
 # final model trained over all data
 X_test = np.linspace(-0.5,2.5,200)  # reset test set to original one
 
@@ -175,7 +190,10 @@ plt.xlabel('input, x')
 plt.ylabel('output, f(x)')
 plt.show()
 
-# Part 6
+#
+#
+#
+
 # GP using sklearn
 kernel = RBF()  # i.e. 1.0 * RBF(length_scale=1.0, length_scale_bounds=(0.05, 1))
 y_pred_prior = GaussianProcessRegressor(kernel=kernel).sample_y(X_test.reshape(-1,1), n_samples=n_samples)  # sample from pior

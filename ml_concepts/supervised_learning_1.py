@@ -16,10 +16,16 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.model_selection import train_test_split
 from scipy.spatial import distance
 
-# Part 1
-# Analytical solving: use Bayes' theorem and p(\omega_2|x) = 1 - p(\omega_1|x)
+#
+#
+#
 
-# Part 2
+# Bayes' theorem and p(\omega_2|x) = 1 - p(\omega_1|x)
+
+#
+#
+#
+
 path_to_file = './data/gaussian2D.txt'
 df = pd.read_csv(path_to_file, sep=' ')
 
@@ -50,7 +56,10 @@ ax.set_ylabel('Y axis')
 ax.set_zlabel('Z axis')
 plt.show()
 
-# Part 3
+#
+#
+#
+
 path_to_trainfile = './data/trainfile.txt'
 path_to_testfile = './data/testfile.txt'
 
@@ -95,10 +104,16 @@ y_pred = 1 + posterior.argmax(axis=1)
 n_error = (y_test!=y_pred).sum()
 confusion_matrix(y_true=y_test, y_pred=y_pred)
 
-# Part 4
-# Analytical solution...
+#
+#
+#
 
-# Part 5
+# ...
+
+#
+#
+#
+
 model = qda().fit(X_train, y_train)
 y_pred = model.predict(X_test)
 confusion_matrix(y_true=y_test, y_pred=y_pred)
@@ -120,7 +135,10 @@ plt.scatter(xx.ravel(), yy.ravel(), c=labels_pred, marker='+', alpha=0.4)
 plt.scatter(X_train.iloc[:,0], X_train.iloc[:,1], c=y_train.replace({1:'black', 2:'red'}))
 plt.show()
 
-# Part 6
+#
+#
+#
+
 model = lda().fit(X_train, y_train)
 y_pred = model.predict(X_test)
 confusion_matrix(y_true=y_test, y_pred=y_pred)
@@ -139,7 +157,10 @@ plt.scatter(xx.ravel(), yy.ravel(), c=labels_pred, marker='+', alpha=0.4)
 plt.scatter(X_train.iloc[:,0], X_train.iloc[:,1], c=y_train.replace({1:'black', 2:'red'}))
 plt.show()
 
-# Part 7
+#
+#
+#
+
 path_to_file = './data/parallelclasses.txt'
 df = pd.read_csv(path_to_file, sep=' ')
 X, y = df.iloc[:,:-1], df.iloc[:,-1]
@@ -162,7 +183,10 @@ plt.scatter(xx.ravel(), yy.ravel(), c=labels_pred, marker='+', alpha=0.4)
 plt.scatter(X.iloc[:,0], X.iloc[:,1], c=y.replace({1:'black', 2:'red'}))
 plt.show()
 
-# Part 7
+#
+#
+#
+
 path_to_file = './data/parallelclasses.txt'
 df = pd.read_csv(path_to_file, sep=' ')
 X, y = df.iloc[:,:-1], df.iloc[:,-1]
@@ -185,7 +209,10 @@ plt.scatter(xx.ravel(), yy.ravel(), c=labels_pred, marker='+', alpha=0.4)
 plt.scatter(X.iloc[:,0], X.iloc[:,1], c=y.replace({1:'black', 2:'red'}))
 plt.show()
 
-# Part 8
+#
+#
+#
+
 path_to_file = './data/boomerang2D.txt'
 df = pd.read_csv(path_to_file, sep=' ')
 X, y = df.iloc[:,:-1], df.iloc[:,-1]
@@ -208,7 +235,10 @@ plt.scatter(xx.ravel(), yy.ravel(), c=labels_pred, marker='+', alpha=0.4)
 plt.scatter(X.iloc[:,0], X.iloc[:,1], c=y.replace({1:'black', 2:'red'}))
 plt.show()
 
-# Part 9
+#
+#
+#
+
 path_to_trainfile = './data/trainfile.txt'
 path_to_testfile = './data/testfile.txt'
 
@@ -238,7 +268,10 @@ plt.scatter(xx.ravel(), yy.ravel(), c=labels_pred, marker='+', alpha=0.4)
 plt.scatter(X_train.iloc[:,0], X_train.iloc[:,1], c=y_train.replace({1:'black', 2:'red'}))
 plt.show()
 
-# Part 10
+#
+#
+#
+
 dimensionality = [2,3,5,10,25,100]
 error_test_mean, error_test_std = [],[]
 
@@ -266,7 +299,10 @@ plt.xlabel('dimensionality')
 plt.ylabel('test error')
 plt.show()
 
-# Part 11
+#
+#
+#
+
 def parzenc(X_train, y_train, X_test, h):
     classes = y_train.unique()
     priors = y_train.value_counts()[classes].values/len(y_train)
