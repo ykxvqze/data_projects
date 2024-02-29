@@ -42,6 +42,10 @@
 
 <a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/queries.sql">queries.sql</a>: nested SQL queries.
 
+## PL/SQL
+
+<a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/plsql.sql">plsql.sql</a>: PL/SQL procedures, cursors, etc.
+
 ## Data toolkit
 
 <a class="external reference" href="https://github.com/ykxvqze/bash_projects#data-toolkit">data toolkit</a> written in Bash for processing CSV files.

@@ -28,7 +28,7 @@ values, counts = np.unique(data['y'], return_counts=True)
 dict(zip(values,counts))
 
 #
-# viualization
+# visualization
 #
 
 # by number of contacts
