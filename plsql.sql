@@ -9,7 +9,7 @@ SELECT * FROM employee;
 | emp_id | first_name | last_name | birth_day  | gender | salary | super_id | branch_id |
 +--------+------------+-----------+------------+--------+--------+----------+-----------+
 |    100 | Dave       | Doe       | 1968-11-19 | M      | 250000 |     NULL |         1 |
-|    101 | John       | Smith     | 1960-08-10 | F      | 110000 |      100 |         1 |
+|    101 | John       | Smith     | 1960-08-10 | M      | 110000 |      100 |         1 |
 |    102 | Pete       | Marley    | 1966-04-11 | M      |  75000 |      100 |         2 |
 |    103 | Angel      | Martin    | 1972-05-28 | F      |  63000 |      102 |         2 |
 |    104 | Valery     | Kap       | 1981-01-03 | F      |  55000 |      102 |         2 |
@@ -70,6 +70,115 @@ SELECT * FROM relations;
 +--------+-----------+-------------+
 */
 
+---
+--- create initial tables
+---
+
+CREATE TABLE employee (
+    emp_id      INT PRIMARY KEY,
+    first_name  VARCHAR2(40),
+    last_name   VARCHAR2(40),
+    birth_day   DATE,
+    gender      VARCHAR2(1),
+    salary      INT,
+    super_id    INT,
+    branch_id   INT
+);
+
+CREATE TABLE branch (
+    branch_id       INT PRIMARY KEY,
+    branch_name     VARCHAR2(40),
+    mng_id          INT,
+    mng_start_date  DATE
+);
+
+CREATE TABLE client (
+  client_id     INT PRIMARY KEY,
+  client_name   VARCHAR2(40),
+  branch_id     INT
+);
+
+CREATE TABLE relations (
+  emp_id        INT,
+  client_id     INT,
+  total_sales   INT,
+  PRIMARY KEY(emp_id, client_id)
+  );
+
+---
+--- Insert data
+---
+
+INSERT INTO employee VALUES(100, 'Dave', 'Doe', TO_DATE('1968-11-19','YYYY-MM-DD'), 'M', 250000, NULL, 1);
+INSERT INTO employee VALUES(101, 'John', 'Smith', TO_DATE('1960-08-10','YYYY-MM-DD'), 'M', 110000, 100, 1);
+INSERT INTO employee VALUES(102, 'Pete', 'Marley', TO_DATE('1966-04-11','YYYY-MM-DD'), 'M', 75000, 100, 2);
+INSERT INTO employee VALUES(103, 'Angel', 'Martin', TO_DATE('1972-05-28','YYYY-MM-DD'), 'F', 63000, 102, 2);
+INSERT INTO employee VALUES(104, 'Valery', 'Kap', TO_DATE('1981-01-03','YYYY-MM-DD'), 'F', 55000, 102, 2);
+INSERT INTO employee VALUES(105, 'Tom', 'Taylor', TO_DATE('1956-01-11','YYYY-MM-DD'), 'M', 69000, 102, 2);
+INSERT INTO employee VALUES(106, 'Lee', 'Porter', TO_DATE('1968-08-09','YYYY-MM-DD'), 'M', 78000, 100, 3);
+INSERT INTO employee VALUES(107, 'Andy', 'Bern', TO_DATE('1972-06-21','YYYY-MM-DD'), 'M', 65000, 106, 3);
+INSERT INTO employee VALUES(108, 'Jim', 'Tal', TO_DATE('1979-11-05','YYYY-MM-DD'), 'M', 71000, 106, 3);
+INSERT INTO employee VALUES(109, 'Oscar', 'Martin', TO_DATE('1969-03-19','YYYY-MM-DD'), 'M', 69000, 106, 3);
+INSERT INTO employee VALUES(110, 'Eric', 'Malon', TO_DATE('1979-03-18','YYYY-MM-DD'), 'M', 69000, 106, 3);
+INSERT INTO employee VALUES(111, 'Pam', 'Bert', TO_DATE('1989-01-17','YYYY-MM-DD'), 'F', 69000, 106, 3);
+
+INSERT INTO branch VALUES(1, 'Corporate-1', 100, TO_DATE('2006-02-09','YYYY-MM-DD'));
+INSERT INTO branch VALUES(2, 'Corporate-2', 102, TO_DATE('1992-04-06','YYYY-MM-DD'));
+INSERT INTO branch VALUES(3, 'Corporate-3', 106, TO_DATE('1998-02-13','YYYY-MM-DD'));
+INSERT INTO branch VALUES(4, 'Corporate-4', NULL, NULL);
+
+INSERT INTO client VALUES(400, 'Client-A', 2);
+INSERT INTO client VALUES(401, 'Client-B', 2);
+INSERT INTO client VALUES(402, 'Client-C', 3);
+INSERT INTO client VALUES(403, 'Client-D', 3);
+INSERT INTO client VALUES(404, 'Client-E', 2);
+INSERT INTO client VALUES(405, 'Client-F', 3);
+INSERT INTO client VALUES(406, 'Client-G', 2);
+
+INSERT INTO relations VALUES(102, 401, 267000);
+INSERT INTO relations VALUES(102, 406, 15000);
+INSERT INTO relations VALUES(105, 400, 55000);
+INSERT INTO relations VALUES(105, 404, 33000);
+INSERT INTO relations VALUES(105, 406, 130000);
+INSERT INTO relations VALUES(107, 403, 5000);
+INSERT INTO relations VALUES(107, 405, 26000);
+INSERT INTO relations VALUES(108, 402, 22500);
+INSERT INTO relations VALUES(108, 403, 12000);
+
+---
+--- set constraints
+---
+
+ALTER TABLE employee
+ADD FOREIGN KEY(branch_id)
+REFERENCES branch(branch_id)
+ON DELETE SET NULL;
+
+ALTER TABLE employee
+ADD FOREIGN KEY(super_id)
+REFERENCES employee(emp_id)
+ON DELETE SET NULL;
+
+ALTER TABLE branch
+ADD FOREIGN KEY(mng_id)
+REFERENCES employee(emp_id)
+ON DELETE SET NULL;
+
+ALTER TABLE client
+ADD FOREIGN KEY(branch_id)
+REFERENCES branch(branch_id)
+ON DELETE SET NULL;
+
+ALTER TABLE relations
+ADD FOREIGN KEY(emp_id)
+REFERENCES employee(emp_id)
+ON DELETE CASCADE;
+
+ALTER TABLE relations
+ADD FOREIGN KEY(client_id)
+REFERENCES client(client_id)
+ON DELETE CASCADE;
+
 --
 -- PL/SQL
 --
@@ -77,30 +186,32 @@ SELECT * FROM relations;
 -- show employee or client
 CREATE OR REPLACE PROCEDURE viewPerson(auxID NUMBER)
 IS
-    auxEmployee     employee.emp_id%TYPE;
-    auxClient       client.client_id%TYPE;
-    auxFN           employee.first_name%TYPE;
-    auxLN           employee.last_name%TYPE;
-    auxDOB          employee.birth_day%TYPE;
-    auxGender       employee.gender%TYPE;
-    auxSalary       employee.salary%TYPE;
-    auxSuperID      employee.super_id%TYPE;
-    auxBranchID     employee.branch_id%TYPE;
-    auxBranchName   branch.branch_name%TYPE;
-    auxClientID     client.client_id%TYPE;
-    auxClientName   client.client_name%TYPE;
-    auxTotalSales   relations.total_sales%TYPE;
+    auxEmployee         employee.emp_id%TYPE;
+    auxClient           client.client_id%TYPE;
+    auxFN               employee.first_name%TYPE;
+    auxLN               employee.last_name%TYPE;
+    auxDOB              employee.birth_day%TYPE;
+    auxGender           employee.gender%TYPE;
+    auxSalary           employee.salary%TYPE;
+    auxSuperID          employee.super_id%TYPE;
+    auxBranchID         employee.branch_id%TYPE;
+    auxBranchName       branch.branch_name%TYPE;
+    auxClientID         client.client_id%TYPE;
+    auxClientName       client.client_name%TYPE;
+    auxTotalSales       relations.total_sales%TYPE;
+    auxEmployeeIDCount  NUMBER;
+    auxClientIDCount    NUMBER;
 
 BEGIN
-    SELECT COUNT(*) INTO auxEmployeeCount
+    SELECT COUNT(*) INTO auxEmployeeIDCount
     FROM employee
     WHERE emp_id = auxID; 
 
-    SELECT COUNT(*) INTO auxClientCount
+    SELECT COUNT(*) INTO auxClientIDCount
     FROM client
     WHERE client_id = auxID;
 
-    IF auxEmployeeCount > 0 THEN
+    IF auxEmployeeIDCount > 0 THEN
         SELECT first_name, last_name, birth_day, gender, salary, super_id, branch_id
         INTO auxFN, auxLN, auxDOB, auxGender, auxSalary, auxSuperID, auxBranchID
         FROM employee
@@ -146,7 +257,7 @@ BEGIN
                 DBMS_OUTPUT.PUT_LINE('Employee does not handle any clients.');
         END;
 
-        ELSIF auxClientCount > 0 THEN
+        ELSIF auxClientIDCount > 0 THEN
             SELECT client_name, branch_id
             INTO auxClientName, auxBranchID
             FROM client
@@ -162,7 +273,9 @@ BEGIN
             DBMS_OUTPUT.PUT_LINE('BRANCH ID   : ' || auxBranchID);
             DBMS_OUTPUT.PUT_LINE('BRANCH NAME : ' || auxBranchName);
             DBMS_OUTPUT.PUT_LINE('-------------------------------------');
-        
+
+        ELSE
+            DBMS_OUTPUT.PUT_LINE('Not a valid ID.');
       END IF;
 END;
 /
@@ -179,19 +292,19 @@ END;
 -- insert into relations
 CREATE OR REPLACE PROCEDURE addSales(auxEmployeeID NUMBER, auxClientID NUMBER, auxSales NUMBER)
 IS
-    auxEmployeeCount     NUMBER;
-    auxClientCount       NUMBER;
+    auxEmployeeIDCount     NUMBER;
+    auxClientIDCount       NUMBER;
 
 BEGIN
-    SELECT COUNT(*) INTO auxEmployeeCount
+    SELECT COUNT(*) INTO auxEmployeeIDCount
     FROM employee
     WHERE emp_id = auxEmployeeID; 
 
-    SELECT COUNT(*) INTO auxClientCount
+    SELECT COUNT(*) INTO auxClientIDCount
     FROM client
     WHERE client_id = auxClientID;
 
-    IF auxEmployeeCount > 0 AND auxClientCount > 0 THEN
+    IF auxEmployeeIDCount > 0 AND auxClientIDCount > 0 THEN
         INSERT INTO relations VALUES (auxEmployeeID, auxClientID, auxSales);
     ELSE
         DBMS_OUTPUT.PUT_LINE('Employee ID or Client ID does not exist.');
@@ -225,21 +338,21 @@ CREATE OR REPLACE PROCEDURE addEmployee(
     )
 IS
 
-    auxEmployeeCount     NUMBER;
-    auxBranchIDCount     NUMBER;
+    auxEmployeeIDCount    NUMBER;
+    auxBranchIDCount      NUMBER;
+    auxSuperIDCount       NUMBER;
 
 BEGIN
-    SELECT COUNT(*) INTO auxEmployeeCount
+    SELECT COUNT(*) INTO auxEmployeeIDCount
     FROM employee
     WHERE emp_id = auxEmployeeID; 
 
-    IF auxEmployeeCount = 0 THEN
-        IF auxSuperID IS NULL OR EXISTS (
-            SELECT emp_id
-            FROM employee
-            WHERE emp_id = auxSuperID
-        ) THEN
+    IF auxEmployeeIDCount = 0 THEN
+        SELECT COUNT(*) INTO auxSuperIDCount
+        FROM employee
+        WHERE emp_id = auxSuperID;
 
+        IF auxSuperIDCount > 0 OR auxSuperID IS NULL THEN
             SELECT COUNT(*) INTO auxBranchIDCount
             FROM branch
             WHERE branch_id = auxBranchID;
@@ -271,10 +384,10 @@ END;
 SET SERVEROUTPUT ON;
 DECLARE
     auxEmployeeID     NUMBER;
-    auxFN             VARCHAR2(20);
-    auxLN             VARCHAR2(20);
-    auxDOB            VARCHAR2(10);
-    auxGender         VARCHAR2(1);
+    auxFN             employee.first_name%TYPE;
+    auxLN             employee.last_name%TYPE;
+    auxDOB            employee.birth_day%TYPE;
+    auxGender         employee.gender%TYPE;
     auxSalary         NUMBER;
     auxSuperID        NUMBER;
     auxBranchID       NUMBER;
@@ -298,14 +411,14 @@ CREATE OR REPLACE PROCEDURE addClient(
     auxBranchID IN NUMBER
     )
 IS
-    auxClientCount      NUMBER;
+    auxClientIDCount      NUMBER;
     auxBranchIDCount    NUMBER;
 BEGIN
-    SELECT COUNT(*) INTO auxClientCount
+    SELECT COUNT(*) INTO auxClientIDCount
     FROM client
     WHERE client_id = auxClientID; 
 
-    IF auxClientCount = 0 THEN
+    IF auxClientIDCount = 0 THEN
         SELECT COUNT(*) INTO auxBranchIDCount
         FROM branch
         WHERE branch_id = auxBranchID;
@@ -328,9 +441,9 @@ END;
 
 SET SERVEROUTPUT ON;
 DECLARE
-    auxClientID     NUMBER;
-    auxClientName   VARCHAR2(20);
-    auxBranchID     NUMBER;
+    auxClientID     client.client_id%TYPE;
+    auxClientName   client.client_name%TYPE;
+    auxBranchID     client.branch_id%TYPE;
 BEGIN
     auxClientID := &ClientID;
     auxClientName := '&ClientName';
@@ -348,7 +461,8 @@ CREATE OR REPLACE PROCEDURE addBranch(
     )
 IS
 
-   auxBranchIDCount    NUMBER;
+   auxBranchIDCount NUMBER;
+   auxMngIDCount    NUMBER;
 
 BEGIN
     SELECT COUNT(*) INTO auxBranchIDCount
@@ -358,12 +472,11 @@ BEGIN
     IF auxBranchIDCount > 0 THEN
         DBMS_OUTPUT.PUT_LINE('Branch ID already exists.');
     ELSE
-        IF auxMngID IS NULL OR EXISTS (
-            SELECT mng_id
-            FROM branch
-            WHERE mng_id = auxMngID
-        ) THEN
+        SELECT COUNT(*) INTO auxMngIDCount
+        FROM employee
+        WHERE emp_id = auxMngID;
 
+        IF auxMngID IS NULL OR auxMngIDCount > 0 THEN
             INSERT INTO branch VALUES (auxBranchID, auxBranchName, auxMngID, auxMngStartDate);
         ELSE
             DBMS_OUTPUT.PUT_LINE('Manager ID is invalid.');
@@ -374,10 +487,10 @@ END;
 
 SET SERVEROUTPUT ON;
 DECLARE
-    auxBranchID     branch.branch_id%TYPE,
-    auxBranchName   branch.branch_name%TYPE,
-    auxMngID        branch.mng_id%TYPE,
-    auxMngStartDate branch.mng_start_date%TYPE,
+    auxBranchID     branch.branch_id%TYPE;
+    auxBranchName   branch.branch_name%TYPE;
+    auxMngID        branch.mng_id%TYPE;
+    auxMngStartDate branch.mng_start_date%TYPE;
 BEGIN
     auxBranchID := &branch_id;
     auxBranchName := '&branch_name';
@@ -396,12 +509,13 @@ CREATE OR REPLACE PROCEDURE updateEmployee(
     auxGender       employee.gender%TYPE,
     auxSalary       employee.salary%TYPE,
     auxSuperID      employee.super_id%TYPE,
-    auxBranchID        employee.branch_id%TYPE
+    auxBranchID     employee.branch_id%TYPE
     )
 IS
 
     auxEmployeeIDCount  NUMBER;
     auxBranchIDCount    NUMBER;
+    auxSuperIDCount    NUMBER;
 
 BEGIN
     SELECT COUNT(*) INTO auxEmployeeIDCount
@@ -409,13 +523,11 @@ BEGIN
     WHERE emp_id = auxEmployeeID;
 
     IF auxEmployeeIDCount > 0 THEN
-        IF auxSuperID IS NULL OR EXISTS (
-            SELECT emp_id
-            FROM employee
-            WHERE emp_id = auxSuperID
-        ) THEN
-            SELECT 
-        
+        SELECT COUNT(*) INTO auxSuperIDCount
+        FROM employee
+        WHERE emp_id = auxSuperID;
+
+        IF auxSuperID IS NULL OR auxSuperIDCount > 0 THEN      
             SELECT COUNT(*) INTO auxBranchIDCount
             FROM branch
             WHERE branch_id = auxBranchID;
@@ -554,7 +666,8 @@ CREATE OR REPLACE PROCEDURE updateBranch(
     )
 IS
 
-   auxBranchIDCount    NUMBER;
+   auxBranchIDCount   NUMBER;
+   auxMngIDCount      NUMBER;
 
 BEGIN
     SELECT COUNT(*) INTO auxBranchIDCount
@@ -564,12 +677,11 @@ BEGIN
     IF auxBranchIDCount = 0 THEN
         DBMS_OUTPUT.PUT_LINE('Branch ID does not exist to update.');
     ELSE
-        IF auxMngID IS NULL OR EXISTS (
-            SELECT mng_id
-            FROM branch
-            WHERE mng_id = auxMngID
-        ) THEN
+        SELECT COUNT(*) INTO auxMngIDCount
+        FROM employee
+        WHERE emp_id = auxMngID;
 
+        IF auxMngID IS NULL OR auxMngIDCount > 0 THEN
             UPDATE branch
             SET branch_name = auxBranchName, mng_id = auxMngID, mng_start_date = auxMngStartDate
             WHERE branch_id = auxBranchID;
@@ -582,10 +694,10 @@ END;
 
 SET SERVEROUTPUT ON;
 DECLARE
-    auxBranchID     branch.branch_id%TYPE,
-    auxBranchName   branch.branch_name%TYPE,
-    auxMngID        branch.mng_id%TYPE,
-    auxMngStartDate branch.mng_start_date%TYPE,
+    auxBranchID     branch.branch_id%TYPE;
+    auxBranchName   branch.branch_name%TYPE;
+    auxMngID        branch.mng_id%TYPE;
+    auxMngStartDate branch.mng_start_date%TYPE;
 BEGIN
     auxBranchID := &branch_id;
     auxBranchName := '&branch_name';
@@ -612,7 +724,7 @@ BEGIN
         FETCH c_employee INTO vFirstName, vLastName;
         EXIT WHEN c_employee%NOTFOUND;
 
-        DBMS_OUTPUT.PUT_LINE('First Name: ' || vFirstName || ', Last Name: ' || vLastName);
+        DBMS_OUTPUT.PUT_LINE(vFirstName || ' ' || vLastName);
         
     END LOOP;
     CLOSE c_employee;
@@ -620,4 +732,7 @@ END;
 /
 
 SET SERVEROUTPUT ON;
-listEmployeeNames;
+BEGIN
+    listEmployeeNames;
+END;
+/

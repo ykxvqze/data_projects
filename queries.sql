@@ -10,7 +10,7 @@ SELECT * FROM employee;
 | emp_id | first_name | last_name | birth_day  | gender | salary | super_id | branch_id |
 +--------+------------+-----------+------------+--------+--------+----------+-----------+
 |    100 | Dave       | Doe       | 1968-11-19 | M      | 250000 |     NULL |         1 |
-|    101 | John       | Smith     | 1960-08-10 | F      | 110000 |      100 |         1 |
+|    101 | John       | Smith     | 1960-08-10 | M      | 110000 |      100 |         1 |
 |    102 | Pete       | Marley    | 1966-04-11 | M      |  75000 |      100 |         2 |
 |    103 | Angel      | Martin    | 1972-05-28 | F      |  63000 |      102 |         2 |
 |    104 | Valery     | Kap       | 1981-01-03 | F      |  55000 |      102 |         2 |
