@@ -1,5 +1,5 @@
 --
--- Database tables
+-- database tables
 --
 
 /*
@@ -106,7 +106,7 @@ CREATE TABLE relations (
   );
 
 ---
---- Insert data
+--- insert data
 ---
 
 INSERT INTO employee VALUES(100, 'Dave', 'Doe', TO_DATE('1968-11-19','YYYY-MM-DD'), 'M', 250000, NULL, 1);
