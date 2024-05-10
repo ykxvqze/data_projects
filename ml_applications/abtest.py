@@ -40,6 +40,7 @@ df_market_size
 
 #df_market_size_per_promo = df.groupby(['promotion','market_size']).aggregate({'market_size':'count'})  # set promotion as index
 df_market_size_per_promo = df.groupby(['promotion','market_size'], as_index=False).aggregate({'sales_in_thousands':'count'})
+df_market_size_per_promo.rename(columns={'sales_in_thousands':'count'}, inplace=True)
 df_market_size_per_promo
 
 # alternatively:
@@ -51,7 +52,7 @@ df_market_size_per_promo = pd.DataFrame(df_market_size_per_promo['sales_in_thous
 
 # bar-plot
 # using pd.pivot_table()
-df_temp = df_market_size_per_promo.pivot_table(index='promotion', columns='market_size', values='sales_in_thousands')
+df_temp = df_market_size_per_promo.pivot_table(index='promotion', columns='market_size', values='count')
 df_temp
 # or using pd.crosstab()
 df_temp = pd.crosstab(df['promotion'], df['market_size'])

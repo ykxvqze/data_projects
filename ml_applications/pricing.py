@@ -105,10 +105,10 @@ def demand(price, loc, scale, market_size):
 
 demand_values = demand(x, loc, scale, 10000)
 
+plt.plot(x, demand_values, lw=2)
 plt.xlabel('price')
 plt.ylabel('demand')
 plt.title('Demand as a function of price')
-plt.plot(x, demand_values, lw=2)
 plt.show()
 
 #

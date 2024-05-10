@@ -205,5 +205,5 @@ plt.xticks(ticks=range(11), labels=clusters.columns)
 plt.title('Cumulative revenue')
 plt.show()
 
-# worth of business (expected revenue over this period):
+# business worth (expected revenue over this period):
 total_cumul_disc.iloc[-1] - total_cumul_disc.iloc[0]  # or total_rev_yearly_disc.iloc[1:].sum()
