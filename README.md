@@ -23,7 +23,7 @@
 </a>, <a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_concepts/html/supervised_learning_1.html">supervised_learning_1.html</a>: supervised learning (part I)<br>
 <a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_concepts/supervised_learning_2.py">supervised_learning_2.py
 </a>, <a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_concepts/html/supervised_learning_2.html">supervised_learning_2.html</a>: supervised learning (part II)<br>
-<a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_concepts/regression.py">regression.py</a>, <a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_concepts/html/regression.html">regression.html</a>: regression<br>
+<a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_concepts/regression.py">regression.py</a>, <a class="external reference" href="https://htmlpreview.github.io/?https://github.com/ykxvqze/data_projects/blob/master/ml_concepts/html/regression.html">regression.html</a>: regression<br>
 <!-- a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_concepts/gaussian_processes.py">gaussian_processes.py</a>: Gaussian processes
 -->
 
