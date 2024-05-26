@@ -4,32 +4,32 @@
 
 ## Machine learning applications
 
-<a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_applications/conversion_rate.py">conversion_rate.py</a>: customer conversion rate<br>
-<a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_applications/conversion_rate.py">segmentation.py</a>: customer segementation<br>
-<a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_applications/clv.py">clv.py</a>: customer lifetime value<br>
-<a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_applications/churn.py">churn.py</a>: churn prediction<br>
-<a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_applications/choice_modeling.py">choice_modeling.py</a>: conjoint analysis (choice modeling).<br>
-<a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_applications/recommender_systems.py">recommender_systems.py</a>: recommender systems<br>
-<a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_applications/pricing.py">pricing.py</a>: price optimization<br>
-<a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_applications/abtest.py">abtest.py</a>: A/B testing
+<a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_applications/conversion_rate.py">conversion_rate.py</a>, <a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_applications/ipynb/conversion_rate.ipynb">conversion_rate.ipynb</a>: customer conversion rate<br>
+<a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_applications/conversion_rate.py">segmentation.py</a>, <a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_applications/ipynb/segmentation.ipynb">segmentation.ipynb</a>: customer segementation<br>
+<a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_applications/clv.py">clv.py</a>, <a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_applications/ipynb/clv.ipynb">clv.ipynb</a>: customer lifetime value<br>
+<a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_applications/churn.py">churn.py</a>, <a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_applications/ipynb/churn_prediction.ipynb">churn_prediction.ipynb</a>: churn prediction<br>
+<a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_applications/choice_modeling.py">choice_modeling.py</a>, <a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_applications/ipynb/choice_modeling.ipynb">choice_modeling.ipynb</a>: conjoint analysis (choice modeling).<br>
+<a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_applications/recommender_systems.py">recommender_systems.py</a>, <a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_applications/ipynb/recommender_systems.ipynb">recommender_systems.ipynb</a>: recommender systems<br>
+<a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_applications/pricing.py">pricing.py</a>, <a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_applications/ipynb/pricing.ipynb">pricing.ipynb</a>: price optimization<br>
+<a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_applications/abtest.py">abtest.py</a>, <a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_applications/ipynb/abtest.ipynb">abtest.ipynb</a>: A/B testing
 
 ## Machine learning concepts
 
-<a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_concepts/fundamental_concepts.py">fundamental_concepts.py</a>: fundamental concepts<br>
-<a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_concepts/feature_selection_extraction.py">feature_selection_extraction.py</a>: feature selection and extraction<br>
+<a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_concepts/fundamental_concepts.py">fundamental_concepts.py</a>, <a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_concepts/ipynb/fundamental_concepts.ipynb">fundamental_concepts.ipynb</a>: fundamental concepts<br>
+<a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_concepts/feature_selection_extraction.py">feature_selection_extraction.py</a>, <a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_concepts/ipynb/feature_selection_extraction.ipynb">feature_selection_extraction.ipynb</a>: feature selection and extraction<br>
 <a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_concepts/unsupervised_learning.py">unsupervised_learning.py
-</a>: clustering<br>
+</a>, <a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_concepts/ipynb/unsupervised_learning.ipynb">unsupervised_learning.ipynb</a>: clustering<br>
 <a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_concepts/supervised_learning_1.py">supervised_learning_1.py
-</a>: supervised learning (part I)<br>
+</a>, <a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_concepts/ipynb/supervised_learning_1.ipynb">supervised_learning_1.ipynb</a>: supervised learning (part I)<br>
 <a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_concepts/supervised_learning_2.py">supervised_learning_2.py
-</a>: supervised learning (part II)<br>
-<a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_concepts/regression.py">regression.py</a>: regression<br>
+</a>, <a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_concepts/ipynb/supervised_learning_2.ipynb">supervised_learning_2.ipynb</a>: supervised learning (part II)<br>
+<a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_concepts/regression.py">regression.py</a>, <a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_concepts/ipynb/regression.ipynb">regression.ipynb</a>: regression<br>
 <!-- a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_concepts/gaussian_processes.py">gaussian_processes.py</a>: Gaussian processes
 -->
 
 ## Processing SQL data via Bash/Python
 
-<a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/sqlextern.sh">sqlextern.sh</a>: Bash script that writes a table from MySQL into a flat file, calls Python for data processing, and writes back the result into a MySQL database.
+<a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/sqlextern.sh">sqlextern.sh</a>: Bash script that writes a table from mysql into a flat file, calls Python for data processing, and writes back the result into a MySQL server.
 
 <!--Summary of procedure: <a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/sqlextern.md">sqlextern.md</a><br>
 -->
