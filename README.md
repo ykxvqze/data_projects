@@ -30,7 +30,7 @@
 
 ## Processing SQL data via Bash/Python
 
-<a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/sqlextern.sh">sqlextern.sh</a>: Bash script that writes a table from mysql into a flat file, calls Python for data processing, and writes back the result into a MySQL server.
+<a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/sqlextern.sh">sqlextern.sh</a>: Bash script that writes a table from MySQL into a flat file, calls Python for data processing, and writes back the result into a MySQL database.
 
 <!--Summary of procedure: <a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/sqlextern.md">sqlextern.md</a><br>
 -->
