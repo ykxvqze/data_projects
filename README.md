@@ -15,15 +15,17 @@
 
 ## Machine learning concepts
 
-<a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_concepts/fundamental_concepts.py">fundamental_concepts.py</a>: fundamental concepts<br>
-<a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_concepts/feature_selection_extraction.py">feature_selection_extraction.py</a>: feature selection and extraction<br>
+<a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_concepts/fundamental_concepts.py">fundamental_concepts.py</a>, <a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_concepts/ipynb/fundamental_concepts.ipynb">ipynb</a>: fundamental concepts<br>
+<a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_concepts/feature_selection_extraction.py">feature_selection_extraction.py</a>, <a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_concepts/ipynb/feature_selection_extraction.ipynb">ipynb</a>: feature selection and extraction<br>
 <a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_concepts/unsupervised_learning.py">unsupervised_learning.py
-</a>: clustering<br>
+</a>, <a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_concepts/ipynb/unsupervised_learning.ipynb">ipynb</a>: clustering<br>
 <a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_concepts/supervised_learning_1.py">supervised_learning_1.py
+</a>, <a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_concepts/ipynb/supervised_learning_1.ipynb">ipynb
 </a>: supervised learning (part I)<br>
 <a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_concepts/supervised_learning_2.py">supervised_learning_2.py
+</a>, <a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_concepts/ipynb/supervised_learning_2.ipynb">ipynb
 </a>: supervised learning (part II)<br>
-<a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_concepts/regression.py">regression.py</a>: regression<br>
+<a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_concepts/regression.py">regression.py</a>, <a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_concepts/ipynb/regression.ipynb">ipynb</a>: regression<br>
 <!-- a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_concepts/gaussian_processes.py">gaussian_processes.py</a>: Gaussian processes
 -->
 
