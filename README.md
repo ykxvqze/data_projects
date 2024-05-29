@@ -2,7 +2,7 @@
 
 <a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/nids.py">nids.py</a>: isolation forest classifier (multiple-OVA design)
 
-<!--## Machine learning applications
+## Machine learning applications
 
 <a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_applications/conversion_rate.py">conversion_rate.py</a>: customer conversion rate<br>
 <a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_applications/conversion_rate.py">segmentation.py</a>: customer segementation<br>
@@ -12,7 +12,6 @@
 <a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_applications/recommender_systems.py">recommender_systems.py</a>: recommender systems<br>
 <a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_applications/pricing.py">pricing.py</a>: price optimization<br>
 <a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_applications/abtest.py">abtest.py</a>: A/B testing
--->
 
 ## Machine learning concepts
 
