@@ -4,14 +4,14 @@
 
 ## Machine learning applications
 
-<a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_applications/conversion_rate.py">conversion_rate.py</a>: customer conversion rate<br>
-<a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_applications/conversion_rate.py">segmentation.py</a>: customer segementation<br>
-<a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_applications/clv.py">clv.py</a>: customer lifetime value<br>
-<a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_applications/churn.py">churn.py</a>: churn prediction<br>
-<a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_applications/choice_modeling.py">choice_modeling.py</a>: conjoint analysis (choice modeling).<br>
-<a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_applications/recommender_systems.py">recommender_systems.py</a>: recommender systems<br>
-<a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_applications/pricing.py">pricing.py</a>: price optimization<br>
-<a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_applications/abtest.py">abtest.py</a>: A/B testing
+<a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_applications/conversion_rate.py">conversion_rate.py</a>, <a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_applications/ipynb/conversion_rate.ipynb">ipynb</a>: customer conversion rate<br>
+<a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_applications/segmentation.py">segmentation.py</a>, <a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_applications/ipynb/segmentation.ipynb">ipynb</a>: customer segementation<br>
+<a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_applications/clv.py">clv.py</a>, <a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_applications/ipynb/clv.ipynb">ipynb</a>: customer lifetime value<br>
+<a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_applications/churn.py">churn.py</a>, <a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_applications/ipynb/churn.ipynb">ipynb</a>: churn prediction<br>
+<a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_applications/choice_modeling.py">choice_modeling.py</a>, <a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_applications/ipynb/choice_modeling.ipynb">ipynb</a>: conjoint analysis (choice modeling).<br>
+<a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_applications/recommender_systems.py">recommender_systems.py</a>, <a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_applications/ipynb/recommender_systems.ipynb">ipynb</a>: recommender systems<br>
+<a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_applications/pricing.py">pricing.py</a>, <a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_applications/ipynb/pricing.ipynb">ipynb</a>: price optimization<br>
+<a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_applications/abtest.py">abtest.py</a>, <a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_applications/ipynb/abtest.ipynb">ipynb</a>: A/B testing
 
 ## Machine learning concepts
 
