@@ -10,7 +10,7 @@ OUTPUT:
 DESCRIPTION:
 
 Bash script that writes a table from MySQL into a flat file, calls Python
-for data processing, and writes back the result into MySQL server. This
+for data processing, and writes back the result into MySQL database. This
 bypasses the need to use customized SQL queries within the database server.
 
 EXAMPLE:

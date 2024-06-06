@@ -2,30 +2,17 @@
 
 <a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/nids.py">nids.py</a>: isolation forest classifier (multiple-OVA design)
 
-## Machine learning applications
-
-<a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_applications/conversion_rate.py">conversion_rate.py</a>, <a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_applications/ipynb/conversion_rate.ipynb">ipynb</a>: customer conversion rate<br>
-<a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_applications/segmentation.py">segmentation.py</a>, <a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_applications/ipynb/segmentation.ipynb">ipynb</a>: customer segementation<br>
-<a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_applications/clv.py">clv.py</a>, <a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_applications/ipynb/clv.ipynb">ipynb</a>: customer lifetime value<br>
-<a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_applications/churn.py">churn.py</a>, <a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_applications/ipynb/churn_prediction.ipynb">ipynb</a>: churn prediction<br>
-<a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_applications/choice_modeling.py">choice_modeling.py</a>, <a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_applications/ipynb/choice_modeling.ipynb">ipynb</a>: conjoint analysis (choice modeling).<br>
-<a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_applications/recommender_systems.py">recommender_systems.py</a>, <a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_applications/ipynb/recommender_systems.ipynb">ipynb</a>: recommender systems<br>
-<a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_applications/pricing.py">pricing.py</a>, <a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_applications/ipynb/pricing.ipynb">ipynb</a>: price optimization<br>
-<a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_applications/abtest.py">abtest.py</a>, <a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_applications/ipynb/ABtesting.ipynb">ipynb</a>: A/B testing
-
 ## Machine learning concepts
 
-<a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_concepts/fundamental_concepts.py">fundamental_concepts.py</a>, <a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_concepts/ipynb/fundamental_concepts.ipynb">ipynb</a>: fundamental concepts<br>
-<a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_concepts/feature_selection_extraction.py">feature_selection_extraction.py</a>, <a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_concepts/ipynb/feature_selection_extraction.ipynb">ipynb</a>: feature selection and extraction<br>
+<a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_concepts/fundamental_concepts.py">fundamental_concepts.py</a>: fundamental concepts<br>
+<a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_concepts/feature_selection_extraction.py">feature_selection_extraction.py</a>: feature selection and extraction<br>
 <a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_concepts/unsupervised_learning.py">unsupervised_learning.py
-</a>, <a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_concepts/ipynb/unsupervised_learning.ipynb">ipynb</a>: clustering<br>
+</a>: clustering<br>
 <a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_concepts/supervised_learning_1.py">supervised_learning_1.py
-</a>, <a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_concepts/ipynb/supervised_learning_I.ipynb">ipynb
 </a>: supervised learning (part I)<br>
 <a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_concepts/supervised_learning_2.py">supervised_learning_2.py
-</a>, <a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_concepts/ipynb/supervised_learning_II.ipynb">ipynb
 </a>: supervised learning (part II)<br>
-<a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_concepts/regression.py">regression.py</a>, <a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_concepts/ipynb/regression.ipynb">ipynb</a>: regression<br>
+<a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_concepts/regression.py">regression.py</a>: regression<br>
 <!-- a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/ml_concepts/gaussian_processes.py">gaussian_processes.py</a>: Gaussian processes
 -->
 
@@ -34,11 +21,6 @@
 <a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/sqlextern.sh">sqlextern.sh</a>: Bash script that writes a table from MySQL into a flat file, calls Python for data processing, and writes back the result into a MySQL database.
 
 <!--Summary of procedure: <a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/sqlextern.md">sqlextern.md</a><br>
--->
-
-<!--## Privacy-preserving method for merging datasets
-
-<a class="external reference" href="https://github.com/ykxvqze/data_projects/blob/master/dbmerger.md">dbmerger.md</a>: a proposed method for merging datasets that contain sensitive information from two different parties without revealing any identifying information to either party. The task can be accomplished via a third party, e.g. a bot, without the bot receiving any identifying information either.
 -->
 
 ## SQL Queries
