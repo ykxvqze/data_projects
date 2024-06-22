@@ -1,8 +1,6 @@
 #!/usr/bin/env python3
 '''
 conjoint analysis (rating-based)
-
-J.A., ykxvqz@pm.me
 '''
 
 import numpy as np

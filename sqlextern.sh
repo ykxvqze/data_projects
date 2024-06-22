@@ -44,8 +44,6 @@ Sample output (adding a column after processing via Python; see "sqlextern.md"):
 | 5  | Kim  | Botanist   | False    |
 | 6  | Val  | Architect  | True     |
 +----+------+------------+----------+
-
-J.A., ykxvqz@pm.me
 '
 
 # install mysql server if not already present

@@ -1,8 +1,6 @@
 #!/usr/bin/env python3
 '''
 customer lifetime value
-
-J.A., ykxvqz@pm.me
 '''
 
 import numpy as np

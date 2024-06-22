@@ -15,8 +15,6 @@ OVA tasks. Multiple one-versus-all (OVA) classifications are carried out in
 the following sequence (most to least common): normal, DoS, Probe, R2L, U2R.
 Instances that are not labeled by any of the one-class classifiers are
 labeled by a nearest mean classifier.
-
-J.A., ykxvqz@pm.me
 '''
 
 import numpy as np

@@ -1,8 +1,6 @@
 #!/usr/bin/env python3
 '''
 conjoint analysis (choice modeling)
-
-J.A., ykxvqz@pm.me
 '''
 
 import numpy as np

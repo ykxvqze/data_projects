@@ -1,8 +1,6 @@
 #!/usr/bin/env python3
 '''
 pricing optimization
-
-J.A., ykxvqz@pm.me
 '''
 
 import numpy as np

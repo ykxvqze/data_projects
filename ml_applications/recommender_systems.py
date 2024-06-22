@@ -1,8 +1,6 @@
 #!/usr/bin/env python3
 '''
 recommender systems
-
-J.A., ykxvqz@pm.me
 '''
 
 # read-in data

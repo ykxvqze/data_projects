@@ -1,8 +1,6 @@
 #!/usr/bin/env python3
 '''
 A/B testing for three different marketing campaigns.
-
-J.A., ykxvqz@pm.me
 '''
 
 import numpy as np

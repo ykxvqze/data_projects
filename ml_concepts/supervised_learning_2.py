@@ -1,8 +1,6 @@
 #!/usr/bin/env python3
 '''
 supervised learning 2
-
-J.A., ykxvqz@pm.me
 '''
 
 import numpy as np

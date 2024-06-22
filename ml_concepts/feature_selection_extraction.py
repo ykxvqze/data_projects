@@ -1,8 +1,6 @@
 #!/usr/bin/env python3
 '''
 feature selection & extraction
-
-J.A., ykxvqz@pm.me
 '''
 
 import numpy as np
