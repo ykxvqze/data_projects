@@ -6,7 +6,7 @@ NSL-KDD dataset for building a network intrusion detection system.
 
 DESCRIPTION:
 
-The target class in any given one-versus-all (OVA) task is assigned a +1 
+The target class in any given one-versus-all (OVA) task is assigned a +1
 label, while all other classes are assgined a -1 label. The optimal
 (ROC) operating point criterion used is balanced accuracy, i.e.
 1 - (fpr + (1-tpr))/2. The optimal threshold is found based on using 70%
