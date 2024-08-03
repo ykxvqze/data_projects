@@ -108,7 +108,7 @@ sudo mysql -Be "
     select * from participants_updated;
 "
 
-# answer to part (1) as a one-liner in Bash
+# part (1) as a one-liner in Bash
 cat /tmp/participants.tsv | sed '1d' | cut -f 3 | sort | uniq -c | sort -n | sed '1d' | sed '$d' | tr -s ' ' | cut -d ' ' -f 3
 
 rm /tmp/participants.tsv /tmp/participants.csv /tmp/filetmp1 /tmp/filetmp2

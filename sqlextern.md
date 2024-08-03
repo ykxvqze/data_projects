@@ -1,6 +1,6 @@
 ## Aim
 
-Export a given table from MySQL into a flat file, then process the data via Python (pandas, numpy) and write the result back into a new table in MySQL database - with all calls being carried out within a Bash script.
+Export a given table from MySQL into a flat file. Then, process the data via Python (pandas, numpy), and write the result back into a new table in MySQL database - with all calls being carried out in a Bash script.
 
 ### Task description
 
@@ -23,11 +23,11 @@ ID | NAME | OCCUPATION
 
 ### Procedure
 
-Instead of querying from within MySQL server and manipulating the data there, the following is carried out in Bash (see <a class="external reference" href="https://github.com/thln2ejz/data_projects/blob/master/sqlextern.sh">sqlextern.sh</a>).
+Instead of querying from within MySQL database and manipulating the data there, the following steps are carried out in Bash (see <a class="external reference" href="https://github.com/thln2ejz/data_projects/blob/master/sqlextern.sh">sqlextern.sh</a>).
 
 0. Create a database 'DB' and a table named 'participants'.
-1. Extract the table from MySQL (via: SELECT * FROM participants) into a flat tsv file
-2. Transform the tab-separated file into a csv file (via 'tr' in Bash).
+1. Extract the table from MySQL (via: SELECT * FROM participants) into a flat tsv file.
+2. Transform the tab-separated file into a csv file.
 3. Process the data as needed via Python called from within Bash, and write the result to a csv file.
 4. Write the same result into a new table in MySQL database.
 
