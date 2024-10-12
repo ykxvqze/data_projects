@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 : '
-A demo for processing SQL data externally via Bash/Python
+Process SQL data externally via Bash/Python
 
 USAGE:  ./sqlextern.sh
 
