@@ -47,7 +47,7 @@ Sample output (adds a column after processing via Python):
 '
 
 # check if mysql server is installed
-if [ -z $(command -v mysql) ]; then
+if [ -z "$(command -v mysql)" ]; then
     echo 'MySQL is not installed.'
     echo 'Install on Debian via: sudo apt-get install default-mysql-server'
     echo 'Exiting ...'
