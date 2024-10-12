@@ -9,9 +9,9 @@ OUTPUT:
 
 DESCRIPTION:
 
-Bash script that writes a table from MySQL into a flat file, calls Python
-for data processing, and writes back the result into MySQL database. This
-bypasses the need to use customized SQL queries within the database server.
+Bash script that copies a table from a MySQL database into a flat file,
+calls Python for data processing, and writes back the result into the MySQL
+database.
 
 EXAMPLE:
 
@@ -32,7 +32,7 @@ Sample input:
 | 6  | Val  | Architect  |
 +----+------+------------+
 
-Sample output (adding a column after processing via Python; see "sqlextern.md"):
+Sample output (adds a column after processing via Python):
 
 +----+------+------------+----------+
 | ID | NAME | OCCUPATION | SELECTED |
@@ -46,33 +46,38 @@ Sample output (adding a column after processing via Python; see "sqlextern.md"):
 +----+------+------------+----------+
 '
 
-# install mysql server if not already present
-[ `command -v mysql` ] || sudo apt-get install default-mysql-server
+# check if mysql server is installed
+if [ -z $(command -v mysql) ]; then
+    echo 'MySQL is not installed.'
+    echo 'Install on Debian via: sudo apt-get install default-mysql-server'
+    echo 'Exiting ...'
+    exit 1
+fi
 
 # create database and table
-sudo mysql -Be "
-    create database DB;
-    use DB;
+sudo mysql -e "
+    CREATE DATABASE IF NOT EXISTS DB;
+    USE DB;
 
-    create table participants
+    DROP TABLE IF EXISTS participants;
+    CREATE TABLE participants
     (
-        ID              varchar(255) not null,
-        NAME            varchar(255) not null,
-        OCCUPATION      varchar(255),
-        primary key     (ID)
+        ID              VARCHAR(255) NOT NULL,
+        NAME            VARCHAR(255) NOT NULL,
+        OCCUPATION      VARCHAR(255),
+        PRIMARY KEY     (ID)
     );
 
-    insert into participants values ('1','Jay','Engineer')  ;
-    insert into participants values ('2','Lin','Engineer')  ;
-    insert into participants values ('3','Tom','Architect') ;
-    insert into participants values ('4','Mat','Engineer')  ;
-    insert into participants values ('5','Kim','Botanist')  ;
-    insert into participants values ('6','Val','Architect') ;
+    INSERT INTO participants VALUES ('1','Jay','Engineer')  ;
+    INSERT INTO participants VALUES ('2','Lin','Engineer')  ;
+    INSERT INTO participants VALUES ('3','Tom','Architect') ;
+    INSERT INTO participants VALUES ('4','Mat','Engineer')  ;
+    INSERT INTO participants VALUES ('5','Kim','Botanist')  ;
+    INSERT INTO participants VALUES ('6','Val','Architect') ;
 "
 
-# query mysql and write into tsv file
-# option -B for tab-separated, i.e. w/o table borders
-sudo mysql -Be "select * from DB.participants;"  > /tmp/participants.tsv
+# query database and write into tsv file
+sudo mysql -Be "SELECT * FROM DB.participants;"  > /tmp/participants.tsv
 
 # transform file into csv
 cat /tmp/participants.tsv | tr '\t' ',' > /tmp/participants.csv
@@ -93,22 +98,22 @@ EOF
 
 python3 /tmp/filetmp1
 
-# write back into mysql as a new table
-sudo mysql -Be "
-    use DB;
-    create table participants_updated
+# write back into database as a new table
+sudo mysql -e "
+    USE DB;
+    CREATE TABLE participants_updated
     (
-        ID              varchar(255) not null,
-        NAME            varchar(255),
-        OCCUPATION      varchar(255),
-        SELECTED        varchar(255)
+        ID              VARCHAR(255) NOT NULL,
+        NAME            VARCHAR(255),
+        OCCUPATION      VARCHAR(255),
+        SELECTED        VARCHAR(255)
     );
 
-    load data infile '/tmp/filetmp2' into table participants_updated fields terminated by ',';
-    select * from participants_updated;
+    LOAD DATA INFILE '/tmp/filetmp2' INTO TABLE participants_updated FIELDS TERMINATED BY ',';
+    SELECT * FROM participants_updated;
 "
 
 # part (1) as a one-liner in Bash
-cat /tmp/participants.tsv | sed '1d' | cut -f 3 | sort | uniq -c | sort -n | sed '1d' | sed '$d' | tr -s ' ' | cut -d ' ' -f 3
+cat /tmp/participants.tsv | sed '1d' | cut -f 3 | sort | uniq -c | sort -n | sed '1d' | sed '$d' | awk '{print $2}' 
 
-rm /tmp/participants.tsv /tmp/participants.csv /tmp/filetmp1 /tmp/filetmp2
+rm /tmp/participants.{tsv,csv} /tmp/filetmp{1,2}
