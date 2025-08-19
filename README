@@ -1,9 +1,9 @@
 Data Projects
 =============
 
-* Network intrusion detection: nids.py, data/
-* ML concepts: ml_concepts/
-* ML applications: ml_applications/
-* Processing SQL data: sqlextern.sh
-* SQL queries: queries.sql
-* PL/SQL procedures: plsql.sql
+* Network intrusion detection : nids.py, data/
+* ML concepts                 : ml_concepts/
+* ML applications             : ml_applications/
+* Processing SQL data         : sqlextern.sh
+* SQL queries                 : queries.sql
+* PL/SQL procedures           : plsql.sql
